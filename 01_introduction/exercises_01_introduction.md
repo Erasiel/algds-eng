@@ -58,5 +58,6 @@ Write Python functions that solve the following tasks:
 2. Given a binary string `s`, replaces all zeros with ones and all ones with zeros.
 3. Given a list of numbers, where every element of the list is between 0 and 9, finds the most frequent element of the list.
 4. Determines the number of unique characters in a string.
+5. Calculates the mean of a 2-dimensional matrix of real numbers.
 
 Use the principles discussed in the previous exercise.
