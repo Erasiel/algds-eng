@@ -45,7 +45,7 @@ class Graph(ABC):
                                   "get_edges")
 ```
 
-When is one representation better than the other? Compare graph representations by implementing `edge_exists` and `get_edges` and analyzing their time complexity. `edge_exits` should determine wether a given edge exists in the graph, and `get_edges` should return the list of all edges in the graph.
+When is one representation better than the other? Compare graph representations by implementing `edge_exists` and `get_edges` and analyzing their time complexity. `edge_exits` should determine whether a given edge exists in the graph, and `get_edges` should return the list of all edges in the graph.
 
 ---
 
@@ -143,4 +143,4 @@ def is_topological_sort(graph: Graph, nodes: List[str]) -> bool:
 
 ### Exercise 8
 
-Design and implement an algorithm that determines a correct topological sort of a directed acyclic graph (DAG). Use the implementation of dept-first search from Exercise 6. You don't have to check wether the graph is truly a DAG.
+Design and implement an algorithm that determines a correct topological sort of a directed acyclic graph (DAG). Use the implementation of dept-first search from Exercise 6. You don't have to check whether the graph is truly a DAG.

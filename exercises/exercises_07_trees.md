@@ -81,7 +81,7 @@ assert height(root) == 2, "The height of this tree should be 2"
 
 ### Exercise 5
 
-When is a binary tree *height-balanced*? Implement a recursive algorithm that checks wether a binary tree (given by its root node) is balanced. Use the `height` function from Exercise 4, along with the following outline:
+When is a binary tree *height-balanced*? Implement a recursive algorithm that checks whether a binary tree (given by its root node) is balanced. Use the `height` function from Exercise 4, along with the following outline:
 
 ```py
 def is_balanced(root: BinaryTreeNode) -> bool:
