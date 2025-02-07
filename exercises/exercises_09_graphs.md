@@ -20,9 +20,9 @@ from abc import ABC, abstractmethod
 
 
 class Graph(ABC):
-    def __init__(self, directed: bool = True) -> None:
+    def __init__(self, undirected: bool = False) -> None:
         super().__init__()
-        self.directed = directed
+        self.undirected = undirected
 
     @abstractmethod
     def add_node(self, node_id: str) -> None:
