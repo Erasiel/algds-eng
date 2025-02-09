@@ -35,17 +35,27 @@ class Graph(ABC):
                                   "add_edge")
 
     @abstractmethod
-    def edge_exists(self, node_from: str, node_to: str) -> bool:
+    def get_nodes(self) -> Set[str]:
         raise NotImplementedError("Abstract class Graph does not implement "
-                                  "edge_exists")
+                                  "get_nodes")
 
     @abstractmethod
     def get_edges(self) -> Set[Tuple[str, str]]:
         raise NotImplementedError("Abstract class Graph does not implement "
                                   "get_edges")
+
+    @abstractmethod
+    def edge_exists(self, node_from: str, node_to: str) -> bool:
+        raise NotImplementedError("Abstract class Graph does not implement "
+                                  "edge_exists")
+
+    @abstractmethod
+    def get_neighbors(self, node_id: str) -> Set[str]:
+        raise NotImplementedError("Abstract class Graph does not implement "
+                                  "get_neighbors")
 ```
 
-When is one representation better than the other? Compare graph representations by implementing `edge_exists` and `get_edges` and analyzing their time complexity. `edge_exits` should determine whether a given edge exists in the graph, and `get_edges` should return the list of all edges in the graph.
+When is one representation better than the other? Compare graph representations by analyzing the time complexity of `edge_exists` and `get_edges`.
 
 ---
 
