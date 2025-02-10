@@ -36,7 +36,7 @@ Send the lab instructor an email from your official University of Szeged email a
 
 The email address of the lab instructor is on the whiteboard.
 
-After you're done with this, delete the script you created for Exercise 3.
+After you're done with this, delete the script you created for Exercise 4.
 
 ---
 
