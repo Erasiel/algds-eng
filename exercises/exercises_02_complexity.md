@@ -75,7 +75,7 @@ def visualize(f: Function,
 
 ### Exercise 3
 
-Using the $O$-notation, analyze the time complexity of the following algorithms.
+Using the $O$-notation, analyze the time complexity of the following three algorithms.
 
 ```py
 def algorithm_01(arr: List[int], x: int) -> int:
@@ -91,9 +91,8 @@ def algorithm_01(arr: List[int], x: int) -> int:
         if arr[i] == x: return i
 
     return -1
-```
 
-```py
+
 def algorithm_02(arr: List[int]) -> int:
     s = 0
     n = len(arr)
@@ -101,13 +100,15 @@ def algorithm_02(arr: List[int]) -> int:
         if n > 0: s += arr[0]
         else: s += -1
     return s
-```
 
-```py
-def algorithm_03(n: int) -> None:
-    for i in range(1, n + 1):
-        for j in range(i + 1, n + 1):
-            print(f"{i}, {j}")
+
+def algorithm_03(arr: List[int]) -> None:
+    n = len(arr)
+    s = 0
+    for i in range(0, n):
+        for j in range(i + 1, n):
+            s += arr[i] * arr[j]
+    return arr
 ```
 
 ---
