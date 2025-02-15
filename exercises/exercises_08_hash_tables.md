@@ -134,6 +134,9 @@ class HashSetOpenAddressing:
 Given a list of strings, determine which strings are *not* unique in the list. Design and implement an algorithm for this task that runs in $O(n)$ time in the average case, where $n$ is the number of strings in the input. Feel free to use built-in data structures. Use the following outline:
 
 ```py
+from typing import List, Set
+
+
 def not_unique(strings: List[str], n: int) -> Set[str]:
     # TODO
 ```

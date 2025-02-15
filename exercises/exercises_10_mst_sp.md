@@ -27,6 +27,9 @@ Run Kruskal's algorithm (first without implementing it) on the following graph. 
 Implement Kruskal's algorithm. Use the example of Exercise 3 for guidance and the outline below with the edge-weighted `Graph` subclasses from Exercise 2. Return the list of edges that make up the minimum spanning tree. You are given an extremely simple Union-Find (also known as Disjoint Set) implementation.
 
 ```py
+from typing import List, Tuple
+
+
 class DisjointSet:
     def __init__(self) -> None:
         self.elements = {}
@@ -91,6 +94,7 @@ You are given a basic outline of Prim's algorithm. The algorithm seems to follow
 
 ```py
 import math
+from typing import List, Tuple
 
 
 class PriorityQueue:

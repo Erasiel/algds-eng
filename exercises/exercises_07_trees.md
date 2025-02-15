@@ -46,6 +46,9 @@ How can we represent rooted trees? Describe and illustrate at least two approach
 Your intern gave you the following code snippet with the function `height` that calculates the height of a node in a binary tree. Unbeknownst to them, the `height` function is implemented incorrectly. Demonstrate why by giving an example on which it fails to return the correct height and fix the mistake. Keep the function recursive.
 
 ```py
+from typing import Optional
+
+
 class BinaryTreeNode:
     def __init__(self,
                  key: int,
@@ -114,6 +117,9 @@ Implement a binary search tree for storing a set of integers. Use the outline be
 The private helper function `_replace` is already implemented for you. This function replaces the subtree with root `u` with the subtree with root `v` in the tree. It might come in handy with the implementation of `delete`.
 
 ```py
+from typing import Optional
+
+
 class BinaryTreeNode:
     def __init__(self,
                  key: int,

@@ -17,6 +17,7 @@ How can we represent graphs? Describe and implement at least two distinct approa
 
 ```py
 from abc import ABC, abstractmethod
+from typing import Set, Tuple
 
 
 class Graph(ABC):
@@ -72,6 +73,9 @@ Run breadth-first search (first without implementing it) on the following graph.
 Implement breadth-first search. Use the example of Exercise 3 for guidance and the outline below with one of the `Graph` subclasses from Exercise 2. The `BFSOut` type represents the properties of a node we compute with the algorithm. Feel free to use this type in tracking the properties of nodes during the algorithm. Extend the graph implementation with any public (or private) method if you deem it necessary.
 
 ```py
+from typing import Dict
+
+
 class BFSOut:
     def __init__(self, parent: str, dist: int, visited: bool) -> None:
         self.parent = parent
@@ -121,6 +125,9 @@ Implement depth-first search. Use the example of Exercise 3 for guidance and the
 
 
 ```py
+from typing import Dict
+
+
 class DFSOut:
     def __init__(self,
                  parent: str,
@@ -145,6 +152,9 @@ def depth_first_search(graph: Graph) -> Dict[str, DFSOut]:
 Design and implement an algorithm that determines if a given ordering of a graph's nodes is a valid *topological sort* of the the graph. Use the outline below:
 
 ```py
+from typing import List
+
+
 def is_topological_sort(graph: Graph, nodes: List[str]) -> bool:
     # TODO
 ```

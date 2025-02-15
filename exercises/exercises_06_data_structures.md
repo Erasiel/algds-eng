@@ -24,6 +24,9 @@ Which variant is used in Python?
 Implement a doubly linked list that stores strings using the outline below. For simplicity, feel free to ignore negative indices in all index-based methods.
 
 ```py
+from typing import Optional
+
+
 class LinkedListItem:
     def __init__(self,
                  key: str,

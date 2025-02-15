@@ -56,6 +56,9 @@ We are given a chess board with $n \times m$ positions, where each position is a
 Return a tuple with two elements: the first is the sum of points along the way, and the second is the list of indices (two element tuples) corresponding to the positions that we move to on the path that yields the maximum points. If multiple paths exist that yield the same maximum, return only one such path. Use the following outline:
 
 ```py
+from typing import List
+
+
 def max_value_path(board: List[List[int]],
                    n: int,
                    m: int
@@ -84,6 +87,9 @@ Given an amount of money $F$ and the denominations $P = \{ p_1, ..., p_n\}$ of a
 Design and implement an algorithm that solves this problem using dynamic programming. Return a list $C$ that fulfills all criteria. If multiple such lists exist, return only one. Use the following outline:
 
 ```py
+from typing import Set
+
+
 def coin_change(F: int, P: Set[int], n: int) -> List[int]:
     # TODO
 ```

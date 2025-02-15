@@ -21,6 +21,9 @@ def fibonacci(n: int) -> int:
 ```
 
 ```py
+from typing import Optional
+
+
 def reverse(s: str, idx: Optional[int] = None) -> int:
     # TODO
 
@@ -29,6 +32,9 @@ reverse("tartar sauce")
 ```
 
 ```py
+from typing import List, Optional
+
+
 def index(arr: List[int],
           x: int,
           r: Optional[int] = None,
@@ -102,6 +108,9 @@ Example: if $n=m=2$, $x=y=1$ and $k=1$, the answer is 0.5. That is because with 
 Implement the merge sort algorithm using recursion. Using the $O$-notation, analyze the time complexity of your implementation. Use the following outline:
 
 ```py
+from typing import List
+
+
 def merge_sort(arr: List[int]) -> List[int]:
     # TODO
 ```

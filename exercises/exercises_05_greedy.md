@@ -19,6 +19,9 @@ We are planning a long car trip, but our car can only carry $n$ liters of fuel. 
 The input contains $k$ numbers $d_1, ..., d_k$ with each $d_i$ representing the distance (in liters of fuel) between the $i-1^\text{th}$ and the $i^\text{th}$ gas stations. Assume that we start at the $0^{th}$ gas station with a full tank. Return the indices of the gas stations at which we have to refuel in order to stop as few times as possible. If multiple such options exist, return only one. Use the following outline:
 
 ```py
+from typing import List
+
+
 def car_trip(distances: List[float], n: float, k: int) -> List[int]:
     # TODO
 ```
@@ -34,6 +37,9 @@ You are given $n$ real numbers $k_1, ..., k_n$. We say a closed interval $[a, b]
 Return a list of two element tuples where each tuple represents an interval by its lower and upper endpoint. If multiple appropriate lists of intervals exist, return only one. Use the following outline:
 
 ```py
+from typing import List
+
+
 def interval_cover(K: List[float], n: int) -> List[Tuple[float, float]]:
     # TODO
 ```
@@ -67,6 +73,9 @@ and $C = 12$. What is the optimal solution? What would be the solution for the f
 Design and implement an algorithm for the 0-1 knapsack problem using dynamic programming. Return the indices of the items that should be put in the knapsack to maximize the total value. If multiple such combinations exist, return only one. Use the following outline:
 
 ```py
+from typing import List
+
+
 def knapsack(V: List[int], W: List[int], C: int, n: int) -> List[int]:
     # TODO
 ```

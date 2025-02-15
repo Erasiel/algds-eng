@@ -19,6 +19,8 @@ Use the following code snippet, which is also included in the file `visualize.py
 
 ```py
 import math
+from typing import Callable
+
 from matplotlib import pyplot as plt
 
 Function = Callable[[float], float]
@@ -78,6 +80,9 @@ def visualize(f: Function,
 Using the $O$-notation, analyze the time complexity of the following three algorithms.
 
 ```py
+from typing import List
+
+
 def algorithm_01(arr: List[int], x: int) -> int:
     c = False
 
@@ -121,6 +126,7 @@ Using the `matplotlib` library, visualize and compare the real runtimes of the a
 import random
 import time
 from typing import List
+
 from matplotlib import pyplot as plt
 
 
@@ -170,6 +176,9 @@ def compare_runtimes(n_points: int = 100,
 Design and implement an algorithm that takes an array of integers and an integer `x` as its input and find the index of `x` in the array. Create an improved version of your algorithm for the case when the input array is *sorted* (in ascending order). Analyze the time complexity of your algorithms using the $O$-notation. Use the following outline:
 
 ```py
+from typing import List
+
+
 def index(arr: List[int], x: int) -> int:
     # TODO
 ```
@@ -181,6 +190,9 @@ def index(arr: List[int], x: int) -> int:
 Design and implement an algorithm that calculates the inner product of two 1-dimensional vectors of $n$ elements. Analyze your algorithm's time complexity using the $O$-notation. Use the following outline:
 
 ```py
+from typing import List
+
+
 def inner_product(vec1: List[int], vec2: List[int]) -> int:
     # TODO
 ```
@@ -192,6 +204,9 @@ def inner_product(vec1: List[int], vec2: List[int]) -> int:
 Design and implement an algorithm that multiplies two 2-dimensional square matrices of $n \times n$ size. Analyze your algorithm's time complexity using the $O$-notation. Use the following outline:
 
 ```py
+from typing import List
+
+
 Matrix = List[List[int]]
 def matmul(mat1: Matrix, mat2: Matrix) -> Matrix:
     # TODO
@@ -204,6 +219,9 @@ def matmul(mat1: Matrix, mat2: Matrix) -> Matrix:
 Design and implement an algorithm that returns all subsets of a set of $n$ numbers. Analyze your algorithm's time complexity using the $O$-notation. Use the following outline:
 
 ```py
+from typing import Set
+
+
 def subsets(nums: Set[int]) -> List[Set[int]]:
     # TODO
 ```
