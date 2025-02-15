@@ -84,7 +84,7 @@ def algorithm_01(arr: List[int], x: int) -> int:
     for i in range(len(arr)):
         if arr[i] == x: c = True
 
-    if not C: return -1
+    if not c: return -1
 
     # Traverse backwards
     for i in range(len(arr) - 1, -1, -1):
