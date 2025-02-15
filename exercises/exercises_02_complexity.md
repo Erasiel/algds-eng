@@ -115,6 +115,58 @@ def algorithm_03(arr: List[int]) -> None:
 
 ### Exercise 4
 
+Using the `matplotlib` library, visualize and compare the real runtimes of the algorithms of Exercise 3 on random inputs. Feel free to take inspiration from the code snippet of Exercise 2. Use the following outline:
+
+```py
+import random
+import time
+from typing import List
+from matplotlib import pyplot as plt
+
+
+def alg01_runtime(n: int) -> float:
+    """Measures the runtime of `algorithm_01` on a random input of size `n`."""
+    arr = list(range(1, n + 1))
+    x = random.randint(1, n)
+
+    start_time = time.time()
+    algorithm_01(arr, x)
+    end_time = time.time()
+    return end_time - start_time
+
+
+def alg02_runtime(n: int) -> float:
+    """Measures the runtime of `algorithm_02` on a random input of size `n`."""
+    arr = [random.randint(1, n) for _ in range(n)]
+
+    start_time = time.time()
+    algorithm_02(arr)
+    end_time = time.time()
+    return end_time - start_time
+
+
+def alg03_runtime(n: int) -> float:
+    """Measures the runtime of `algorithm_03` on a random input of size `n`."""
+    arr = [random.randint(1, n) for _ in range(n)]
+
+    start_time = time.time()
+    algorithm_03(arr)
+    end_time = time.time()
+    return end_time - start_time
+
+
+def compare_runtimes(n_points: int = 100,
+                     start: int = 1,
+                     step: int = 100
+) -> None:
+    # TODO
+
+```
+
+---
+
+### Exercise 5
+
 Design and implement an algorithm that takes an array of integers and an integer `x` as its input and find the index of `x` in the array. Create an improved version of your algorithm for the case when the input array is *sorted* (in ascending order). Analyze the time complexity of your algorithms using the $O$-notation. Use the following outline:
 
 ```py
@@ -124,7 +176,7 @@ def index(arr: List[int], x: int) -> int:
 
 ---
 
-### Exercise 5
+### Exercise 6
 
 Design and implement an algorithm that calculates the inner product of two 1-dimensional vectors of $n$ elements. Analyze your algorithm's time complexity using the $O$-notation. Use the following outline:
 
@@ -135,7 +187,7 @@ def inner_product(vec1: List[int], vec2: List[int]) -> int:
 
 ---
 
-### Exercise 6
+### Exercise 7
 
 Design and implement an algorithm that multiplies two 2-dimensional square matrices of $n \times n$ size. Analyze your algorithm's time complexity using the $O$-notation. Use the following outline:
 
@@ -147,7 +199,7 @@ def matmul(mat1: Matrix, mat2: Matrix) -> Matrix:
 
 ---
 
-### Exercise 7
+### Exercise 8
 
 Design and implement an algorithm that returns all subsets of a set of $n$ numbers. Analyze your algorithm's time complexity using the $O$-notation. Use the following outline:
 
