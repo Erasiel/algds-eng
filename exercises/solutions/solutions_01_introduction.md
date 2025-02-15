@@ -60,7 +60,7 @@ def add_firsts(list1: List[float], list2: List[float], c: float) -> float:
     return list1[0] + list2[0] * c
 ```
 
-Here, `List[float]` hints that the list contains only real numbers. Python does not check these types by default, but you can set up your editor / IDE, or run third-party libraries to do so, with varying levels of strictness. Most large Python codebases do type hinting like this, so getting familiar with the `typing` package is heavily recommended.
+Here, `List[float]` hints that the list contains only real numbers. Python does not check these types by default, but you can set up your editor / IDE, or run third-party libraries to do so, with varying levels of strictness. Most large Python codebases have similar type hinting, so getting familiar with the `typing` package is heavily recommended.
 
 ---
 
