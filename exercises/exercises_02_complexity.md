@@ -219,7 +219,7 @@ def matmul(mat1: Matrix, mat2: Matrix) -> Matrix:
 Design and implement an algorithm that returns all subsets of a set of $n$ numbers. Analyze your algorithm's time complexity using the $O$-notation. Use the following outline:
 
 ```py
-from typing import Set
+from typing import List, Set
 
 
 def subsets(nums: Set[int]) -> List[Set[int]]:
