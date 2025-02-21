@@ -50,7 +50,7 @@ index([1, 2, 3, 4, 5], 4)
 
 ### Exercise 2
 
-Our goal is to get to the top of the $n$-th step in a very long flight of stairs. We can only move either one or two steps with at a time and we can not go backwards. Design and implement a recursive algorithm that finds the number of distinct movement sequences we can take to get to get on top of the $n$-th step. Use the following outline:
+Our goal is to get to the top of the $n$-th step in a very long flight of stairs. We can only move either one or two steps at a time and we can not go backwards. Design and implement a recursive algorithm that finds the number of distinct movement sequences we can take to get to get on top of the $n$-th step. Use the following outline:
 
 ```py
 def steps(n_steps: int) -> int:
@@ -70,7 +70,7 @@ def board(n: int, m: int) -> int:
     # TODO
 ```
 
-Example: if $n=m=2$, the answer is 2. We can either start by moving up, followed by a right move, or start with a right move, followed by a move up.
+Example: if $n=m=2$, the answer is 2. We can either start by moving down, followed by a right move, or start with a right move, followed by a move down.
 
 ---
 
