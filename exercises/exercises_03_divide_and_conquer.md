@@ -24,7 +24,7 @@ def fibonacci(n: int) -> int:
 from typing import Optional
 
 
-def reverse(s: str, idx: Optional[int] = None) -> int:
+def reverse(s: str, idx: Optional[int] = None) -> str:
     # TODO
 
 # Example call
@@ -68,7 +68,7 @@ Example: if $n=3$, the answer is 3. We can either move 1 step 3 times, move 2 st
 
 ### Exercise 3
 
-On a custom chess board with $n \times m$ positions, we want to move from the top-left corner to the bottom-right corner. We can only move one position down or right at a time and we can not go backwards. Design and implement a recursive algorithm that finds the number of distinct movement sequences we can take to get to get to the top-right corner.
+On a custom chess board with $n \times m$ positions, we want to move from the top-left corner to the bottom-right corner. We can only move one position down or right at a time and we can not go backwards. Design and implement a recursive algorithm that finds the number of distinct movement sequences we can take to get to get to the bottom-right corner.
 
 **Constraints**
 - $n, m > 0$
