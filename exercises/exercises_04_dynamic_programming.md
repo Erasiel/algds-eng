@@ -53,10 +53,15 @@ Re-implement `boards_dp` so that it uses only $O(n)$ or $O(m)$ additional space,
 
 We are given a chess board with $n \times m$ positions, where each position is assigned a value. Every time we move to a position, we collect its value as points. Design and implement an algorithm using dynamic programming to find a path from the top-left position (at index `[0, 0]`) to the bottom-right position (at index `[n-1, k-1]`) that maximizes the collected points along the way. We can only move one position down or right at a time and we can not go backwards.
 
-Return a tuple with two elements: the first is the sum of points along the way, and the second is the list of indices (two element tuples) corresponding to the positions that we move to on the path that yields the maximum points. If multiple paths exist that yield the same maximum, return only one such path. Use the following outline:
+Return a tuple with two elements: the first is the sum of points along the way, and the second is the list of indices (two element tuples) corresponding to the positions that we move to on the path that yields the maximum points. If multiple paths exist that yield the same maximum, return only one such path.
+
+**Constraints:**
+- $n, m > 0$
+
+Use the following outline:
 
 ```py
-from typing import List
+from typing import List, Tuple
 
 
 def max_value_path(board: List[List[int]],
@@ -83,15 +88,22 @@ the maximum value is 8 and the path that yields this value is `[(0, 0), (0, 1), 
 
 ### Exercise 5
 
-Given an amount of money $F$ and the denominations $P = \{ p_1, ..., p_n\}$ of an infinite set of coins, find the minimum number of coins of the given denominations that add up to $F$. In other words, find $C = [c_1, c_2, ..., c_m]$ such that $\sum C = \sum_{i=1}^m c_i = F$, all $c_i \in P$, and $m$ is minimal. This problem is commonly known as the change-making, or coin change problem. Note that any denomination in $P$ can be used infinitely many times, so the values in $Q$ don't have to be distinct.
+Given an amount of money $F$, coin denominations $P = p_1, ..., p_n$, and an infinite number of coins of each denomination, find the minimum number of coins of the given denominations that add up to $F$. In other words, find $C = [c_1, c_2, ..., c_m]$ such that $\sum C = \sum_{i=1}^m c_i = F$, all $c_i \in P$, and $m$ is minimal. This problem is commonly known as the change-making, or coin change problem. Note that any denomination in $P$ can be used infinitely many times, so the values in $Q$ don't have to be distinct.
 
-Design and implement an algorithm that solves this problem using dynamic programming. Return a list $C$ that fulfills all criteria. If multiple such lists exist, return only one. Use the following outline:
+Design and implement an algorithm that solves this problem using dynamic programming. Return a list $C$ that fulfills all criteria. If multiple such lists exist, return only one.
+
+**Constraints:**
+- $F \geq 0$
+- $p_i > 0$ for all $i = 1, ..., n$
+- $n > 0$
+
+Use the following outline:
 
 ```py
-from typing import Set
+from typing import List
 
 
-def coin_change(F: int, P: Set[int], n: int) -> List[int]:
+def coin_change(F: int, P: List[int], n: int) -> List[int]:
     # TODO
 ```
 
@@ -107,7 +119,12 @@ Given two strings, find their longest common subsequence. A subsequence is simil
 
 For example, subsequences of the string `"apple"` include `"ap"`, `"pp"`, `"ae"`, `"pe"`, `"ale"`, the empty string, and so on. Strings such as `"elp"` and `"pap"` are not subsequences of `"apple"` because the original order of elements is not preserved.
 
-Design and implement an algorithm using dynamic programming that determines the longest common subsequence of two strings. If multiple such subsequences exist, return only one. Use the following outline:
+Design and implement an algorithm using dynamic programming that determines the longest common subsequence of two strings. If multiple such subsequences exist, return only one.
+
+**Constraints:**
+- The length of both strings is greater than, or equal to zero.
+
+Use the following outline:
 
 ```py
 def longest_common_subsequence(s1: str, s2: str) -> str:
