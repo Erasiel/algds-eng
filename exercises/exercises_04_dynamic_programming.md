@@ -69,12 +69,13 @@ def max_value_path(board: List[List[int]],
 Hint: start by computing the maximum value, and derive the path to it from the dynamic programming table.
 
 Example: for $n = m = 2$ and the $2 \times 2$ matrix
-$$
+
+```math
 \begin{pmatrix}
 1 & 3\\
 2 & 4
 \end{pmatrix}
-$$
+```
 
 the maximum value is 8 and the path that yields this value is `[(0, 0), (0, 1), (1, 1)]`. Note that if we were to go down from `(0, 0)` istead of going right, we could only achieve 7 points.
 
