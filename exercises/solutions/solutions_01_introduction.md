@@ -75,7 +75,7 @@ Write Python functions that solve the following tasks:
 
 Use the principles discussed in the previous exercise.
 
-### Solutions
+### Solution
 
 For these simple exercises, we'll omit documentation and other comments.
 

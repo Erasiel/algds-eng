@@ -1,4 +1,4 @@
-# Complexity Analysis
+# Complexity Analysis - Solutions
 
 ### Exercise 1
 
@@ -149,7 +149,7 @@ def algorithm_03(arr: List[int]) -> None:
     return arr
 ```
 
-### Solutions
+### Solution
 
 - `algorithm_01`: $O(n)$
 - `algorithm_02`: $O(1)$ (note that the `for` loop does 500 iterations regardless of the size of the input)
