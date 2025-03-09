@@ -37,8 +37,8 @@ from typing import List, Optional
 
 def index(arr: List[int],
           x: int,
-          r: Optional[int] = None,
-          l: Optional[int] = None
+          l: Optional[int] = None,
+          r: Optional[int] = None
 ) -> int:
     # TODO
 
