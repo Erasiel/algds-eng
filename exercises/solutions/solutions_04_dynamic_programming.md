@@ -22,7 +22,7 @@ As a reminder, the problems these algorithms solve are the following:
 Our goal is to get to the top of the $n$-th step in a very long flight of stairs. We can only move either one or two steps with at a time and we can not go backwards. Design and implement a recursive algorithm that finds the number of distinct movement sequences we can take to get to get on top of the $n$-th step.
 
 `board`:<br />
-On a custom chess board with $n \times m$ positions, we want to move from the top-left corner to the bottom-right corner. We can only move one position down or right at a time and we can not go backwards. Design and implement a recursive algorithm that finds the number of distinct movement sequences we can take to get to get to the top-right corner.
+On a custom chess board with $n \times m$ positions, we want to move from the top-left corner to the bottom-right corner. We can only move one position down or right at a time and we can not go backwards. Design and implement a recursive algorithm that finds the number of distinct movement sequences we can take to get to get to the bottom-right corner.
 
 Use the following outlines:
 
