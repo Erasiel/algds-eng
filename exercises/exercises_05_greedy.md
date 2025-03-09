@@ -37,7 +37,7 @@ You are given $n$ real numbers $k_1, ..., k_n$. We say a closed interval $[a, b]
 Return a list of two element tuples where each tuple represents an interval by its lower and upper endpoint. If multiple appropriate lists of intervals exist, return only one. Use the following outline:
 
 ```py
-from typing import List
+from typing import List, Tuple
 
 
 def interval_cover(K: List[float], n: int) -> List[Tuple[float, float]]:
