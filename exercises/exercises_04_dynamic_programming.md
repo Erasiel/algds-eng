@@ -88,7 +88,7 @@ the maximum value is 8 and the path that yields this value is `[(0, 0), (0, 1), 
 
 ### Exercise 5
 
-Given an amount of money $F$, coin denominations $P = p_1, ..., p_n$, and an infinite number of coins of each denomination, find the minimum number of coins of the given denominations that add up to $F$. In other words, find $C = [c_1, c_2, ..., c_m]$ such that $\sum C = \sum_{i=1}^m c_i = F$, all $c_i \in P$, and $m$ is minimal. This problem is commonly known as the change-making, or coin change problem. Note that any denomination in $P$ can be used infinitely many times, so the values in $Q$ don't have to be distinct.
+Given an amount of money $F$, coin denominations $P = [p_1, ..., p_n]$, and an infinite number of coins of each denomination, find the minimum number of coins of the given denominations that add up to $F$. In other words, find $C = [c_1, c_2, ..., c_m]$ such that $\sum C = \sum_{i=1}^m c_i = F$, all $c_i \in P$, and $m$ is minimal. This problem is commonly known as the change-making, or coin change problem. Note that any denomination in $P$ can be used infinitely many times, so the values in $C$ don't have to be distinct.
 
 Design and implement an algorithm that solves this problem using dynamic programming. Return a list $C$ that fulfills all criteria. If multiple such lists exist, return only one.
 
@@ -109,7 +109,7 @@ def coin_change(F: int, P: List[int], n: int) -> List[int]:
 
 Hint: just like before, start by computing the minimum number of coins needed to make the change.
 
-Example: for $F = 10$, $n=4$ and $P = \{1, 2, 4, 7 \}$ the desired output is either `[7, 2, 1]` or `[4, 4, 2]` (in whatever permuation). There isn't a way to change $F$ with only 2 coins from the denominations of $P$ and any more than 3 coins is not minimal.
+Example: for $F = 10$, $n=4$ and $P = [1, 2, 4, 7]$ the desired output is either `[7, 2, 1]` or `[4, 4, 2]` (in whatever permuation). There isn't a way to change $F$ with only 2 coins from the denominations of $P$ and any more than 3 coins is not minimal.
 
 ---
 
