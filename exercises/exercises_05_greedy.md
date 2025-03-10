@@ -70,17 +70,82 @@ and $C = 12$. What is the optimal solution? What would be the solution for the f
 
 ### Exercise 6
 
-Design and implement an algorithm for the 0-1 knapsack problem using dynamic programming. Return the indices of the items that should be put in the knapsack to maximize the total value. If multiple such combinations exist, return only one. Use the following outline:
+Based on the discussion of Exercise 5, implement an algorithm for the fractional knapsack problem, where an item can be used at most once. Your algorithm should calculate the maximum total value that can be put in the knapsack.
+
+Use the following outline, where items are represented by the `Item` class:
 
 ```py
 from typing import List
 
 
-def knapsack(V: List[int], W: List[int], C: int, n: int) -> List[int]:
+class Item:
+    def __init__(self, value: int, weight: int) -> None:
+        self.value = value
+        self.weight = weight
+
+
+def knapsack(C: int, items: List[Item] n: int) -> float:
     # TODO
 ```
 
-Hint: start by calculating the maximum total value. Feel free to use the solution to the coin change problem (week 4, exercise 5) as starting point.
+As further practice, extend your algorithm so that it returns how much of each item should be put in the knapsack for the largest total value. Return a `Dict[Item, float]` object that assigns a real value between 0 and 1 to all items, based on what fraction the item is used in the optimal solution.
+
+Use the following outline:
+
+```py
+from typing import List, Dict
 
 
+class Item:
+    def __init__(self, value: int, weight: int) -> None:
+        self.value = value
+        self.weight = weight
 
+
+def knapsack(C: int, items: List[Item] n: int) -> Dict[Item, float]:
+    # TODO
+```
+
+---
+
+### Exercise 7
+
+Design and implement an algorithm for the 0-1 knapsack problem using dynamic programming. Return the maximum total value that can be put in the knapsack.
+
+Use the following outline, where items are represented by the `Item` class:
+
+```py
+from typing import List
+
+
+class Item:
+    def __init__(self, value: int, weight: int) -> None:
+        self.value = value
+        self.weight = weight
+
+
+def knapsack(C: int, items: List[Item] n: int) -> float:
+    # TODO
+```
+
+Hint: Feel free to use the solution to the coin change problem (Week 4, Exercise 5) as starting point.
+
+As further practice, extend your algorithm so that it returns whether an item is used in the optimal solution or not. Return a `Dict[Item, bool]` object that assigns `True` to an item if it is put in the knapsack in the optimal solution and `False` if the item is not used. If multiple optimal solutions exist, return only one.
+
+Use the following outline:
+
+```py
+from typing import List, Dict
+
+
+class Item:
+    def __init__(self, value: int, weight: int) -> None:
+        self.value = value
+        self.weight = weight
+
+
+def knapsack(C: int, items: List[Item] n: int) -> Dict[Item, bool]:
+    # TODO
+```
+
+Hint: start by calculating the maximum total value.
