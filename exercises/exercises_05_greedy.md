@@ -84,7 +84,7 @@ class Item:
         self.weight = weight
 
 
-def knapsack(C: int, items: List[Item] n: int) -> float:
+def knapsack(C: int, items: List[Item], n: int) -> float:
     # TODO
 ```
 
@@ -102,7 +102,7 @@ class Item:
         self.weight = weight
 
 
-def knapsack(C: int, items: List[Item] n: int) -> Dict[Item, float]:
+def knapsack(C: int, items: List[Item], n: int) -> Dict[Item, float]:
     # TODO
 ```
 
@@ -124,7 +124,7 @@ class Item:
         self.weight = weight
 
 
-def knapsack(C: int, items: List[Item] n: int) -> float:
+def knapsack(C: int, items: List[Item], n: int) -> float:
     # TODO
 ```
 
@@ -144,7 +144,7 @@ class Item:
         self.weight = weight
 
 
-def knapsack(C: int, items: List[Item] n: int) -> Dict[Item, bool]:
+def knapsack(C: int, items: List[Item], n: int) -> Dict[Item, bool]:
     # TODO
 ```
 
