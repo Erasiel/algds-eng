@@ -155,7 +155,7 @@ class LinkedList:
         """Returns the length of the list."""
         return self.length
 
-    def insert_index(self, index: int) -> None:
+    def insert_index(self, key: str, index: int) -> None:
         """Inserts the key at the specified index."""
         # TODO
         pass
