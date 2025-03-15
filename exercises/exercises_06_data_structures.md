@@ -13,7 +13,7 @@ What is an abstract data structure? Briefly describe the following abstract data
 
 ### Exercise 2
 
-What is the difference between a `List` implementation that uses an array (e.g. `java.util.ArrayList` in Java or `std::vector` in C++) and a linked list implementation? When is one more effective than the other? Is one better than the other?
+What is the difference between a `List` implementation that uses a direct access array (e.g. `java.util.ArrayList` in Java or `std::vector` in C++) and a linked list implementation? When is one more effective than the other? Is one better than the other?
 
 Which variant is used in Python?
 
@@ -21,7 +21,19 @@ Which variant is used in Python?
 
 ### Exercise 3
 
-Implement a doubly linked list that stores strings using the outline below. For simplicity, feel free to ignore negative indices in all index-based methods.
+The following code snippet cointains a half-complete implementation of a doubly linked list that stores strings. The following methods are implemented:
+- `insert`: inserts a key at the beginning of the list
+- `delete`: deletes the first occurence of a key
+- `search`: returns the index of the given key
+- `get`: returns the key at the given index
+
+An example usage of the implementation is included in the code snippet.
+
+Your task is to implement the following methods:
+- `insert_index`: inserts a key at the given index
+- `delete_index`: deletes the key at the given index
+
+Feel free to take inspiration from the already implemented methods.
 
 ```py
 from typing import Optional
@@ -40,33 +52,136 @@ class LinkedListItem:
 
 class LinkedList:
     def __init__(self):
-        # TODO
-        pass
+        self.head = None
+        self.length = 0
 
     def insert(self, key: str) -> None:
         """Inserts an element at the beginning of the list."""
-        # TODO
-        pass
 
-    def find(self, key: str) -> int:
-        """Finds the index of the key or -1 if the key is not in the list."""
-        # TODO
-        pass
+        # Wrap the new key in a LinkedListItem
+        new_item = LinkedListItem(key)
+
+        # If the list is not empty, set the new item's `next` pointer to the
+        # current first item and the current first item's `prev` pointer to the
+        # new item
+        if self.head is not None:
+            new_item.next = self.head
+            self.head.prev = new_item
+
+        # Set the new item as the first element and increase the length counter
+        self.head = new_item
+        self.length += 1
+
+    def search(self, key: str) -> int:
+        """Returns the index of the key or -1 if the key is not in the list."""
+
+        # Start the search from the head of the list at index 0
+        curr = self.head
+        iter_idx = 0
+
+        # While the current item is not None (i.e. the end of the list)
+        while curr is not None:
+
+            # If we found the first occurence, return its index
+            if curr.key == key: return iter_idx
+
+            # Otherwise, step to the next item
+            curr = curr.next
+            iter_idx += 1
+        return -1
 
     def get(self, index: int) -> str:
         """Returns the key at the specified index in the list."""
+
+        # Python supports negative indices
+        if index < 0: index = self.length + index
+
+        # If the queried index is not in the list, raise an IndexError
+        if index >= self.length or index < 0: raise IndexError("Invalid index")
+
+        # Start the search from the head of the list at index 0
+        curr = self.head
+        iter_idx = 0
+
+        # While the current item's index is not the queried index, step to the
+        # next item
+        while iter_idx != index:
+            curr = curr.next
+            iter_idx += 1
+        return curr.key
+
+    def delete(self, key: str) -> bool:
+        """Deletes the first occurence of the key from the list.
+
+        Returns True if the delete is successful, or False if the key is not in
+        the list.
+        """
+
+        # Find the item that contains the first occurence of the key
+        curr = self.head
+        while curr is not None and curr.key != key:
+            curr = curr.next
+
+        # If the key is not in the list, return False
+        if curr is None:
+            return False
+
+        # Otherwise, delete the item from the list by setting the previous and
+        # next items' corresponding pointers to each other
+        else:
+            next_item = curr.next
+            prev_item = curr.prev
+            if next_item is not None: next_item.prev = prev_item
+            if prev_item is not None: prev_item.next = next_item
+
+            # Decrease the length counter and return True to indicate a
+            # succesful delete
+            self.length -= 1
+            return True
+
+    def __str__(self) -> str:
+        """Returns the string representation of the list."""
+        if self.head is None:
+            return "[]"
+        else:
+            s = f"'{self.head.key}'"
+            curr = self.head.next
+            while curr is not None:
+                s += f", '{curr.key}'"
+                curr = curr.next
+            return f"[{s}]"
+
+    def __len__(self) -> int:
+        """Returns the length of the list."""
+        return self.length
+
+    def insert_index(self, index: int) -> None:
+        """Inserts the key at the specified index."""
         # TODO
         pass
 
-    def delete_key(self, key: str) -> str:
-        """Deletes the first occurence of the key from the list."""
+    def delete_index(self, index: int) -> bool:
+        """Deletes the key at the specified index.
+
+        Returns True if the delete is successful, or False if the key is not in
+        the list.
+        """
         # TODO
         pass
 
-    def delete_index(self, index: int) -> str:
-        """Deletes the key at the specified index."""
-        # TODO
-        pass
+
+# Example usage
+linked_list = LinkedList()
+linked_list.insert("s0")        # insert "s0" at the beginning of the list
+linked_list.insert("s1")        # insert "s1" at the beginning of the list
+linked_list.insert("s2")        # insert "s2" at the beginning of the list
+print(linked_list)              # expected output: ['s2', 's1', 's0']
+linked_list.delete("s1")        # delete the first occurence of "s1"
+print(linked_list)              # expected output: ['s2', 's0']
+linked_list.delete("s3")        # no effect, "s3" is not in the list
+print(linked_list)              # expected output: ['s2', 's0']
+print(linked_list.get(1))       # expected output: s0
+# print(linked_list.get(2))       # invalid index, the length of the list is 2
 ```
 
 ---
