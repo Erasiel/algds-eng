@@ -110,7 +110,7 @@ class LinkedList:
             iter_idx += 1
         return curr.key
 
-    def delete(self, key: str) -> bool:
+    def delete(self, key: str) -> None:
         """Deletes the first occurence of the key from the list.
 
         Returns True if the delete is successful, or False if the key is not in
@@ -133,6 +133,10 @@ class LinkedList:
             prev_item = curr.prev
             if next_item is not None: next_item.prev = prev_item
             if prev_item is not None: prev_item.next = next_item
+
+            # If the first item is to be deleted, set the head pointer to its
+            # next neighbor
+            if curr == self.head: self.head = curr.next
 
             # Decrease the length counter and return True to indicate a
             # succesful delete
@@ -160,28 +164,34 @@ class LinkedList:
         # TODO
         pass
 
-    def delete_index(self, index: int) -> bool:
-        """Deletes the key at the specified index.
-
-        Returns True if the delete is successful, or False if the key is not in
-        the list.
-        """
+    def delete_index(self, index: int) -> None:
+        """Deletes the key at the specified index."""
         # TODO
         pass
 
 
 # Example usage
 linked_list = LinkedList()
-linked_list.insert("s0")        # insert "s0" at the beginning of the list
-linked_list.insert("s1")        # insert "s1" at the beginning of the list
-linked_list.insert("s2")        # insert "s2" at the beginning of the list
-print(linked_list)              # expected output: ['s2', 's1', 's0']
-linked_list.delete("s1")        # delete the first occurence of "s1"
-print(linked_list)              # expected output: ['s2', 's0']
-linked_list.delete("s3")        # no effect, "s3" is not in the list
-print(linked_list)              # expected output: ['s2', 's0']
-print(linked_list.get(1))       # expected output: s0
-# print(linked_list.get(2))       # invalid index, the length of the list is 2
+linked_list.insert("s0")            # insert "s0" at the beginning of the list
+linked_list.insert("s1")            # insert "s1" at the beginning of the list
+linked_list.insert("s2")            # insert "s2" at the beginning of the list
+print(linked_list)                  # expected output: ['s2', 's1', 's0']
+linked_list.delete("s1")            # delete the first occurence of "s1"
+print(linked_list)                  # expected output: ['s2', 's0']
+linked_list.delete("s3")            # no effect, "s3" is not in the list
+print(linked_list)                  # expected output: ['s2', 's0']
+print(linked_list.get(1))           # expected output: s0
+# print(linked_list.get(2))           # invalid index, the length of the list is 2
+
+# Testing your work
+linked_list.insert_index("s3", 1)   # insert "s3" at index 1
+print(linked_list)                  # expected output: ['s2', 's3', 's0']
+linked_list.insert_index("s4", 3)   # insert "s4" at index 4 (end of the list)
+print(linked_list)                  # expected output: ['s2', 's3', 's0', 's4']
+linked_list.delete_index(2)         # delete the item at index 2
+print(linked_list)                  # expected output: ['s2', 's3', 's4']
+linked_list.delete_index(0)         # delete the first item
+print(linked_list)                  # expected output: ['s3', 's4']
 ```
 
 ---
