@@ -198,7 +198,9 @@ print(linked_list)                  # expected output: ['s3', 's4']
 
 ### Exercise 4
 
-Implement a stack that stores strings using the `LinkedList` implementation from the previous exercise as the underlying container. Make sure all methods run in $O(1)$ time. Use the following outline:
+Implement a stack that stores strings using the `LinkedList` implementation from the previous exercise as the underlying container. Make sure all methods run in $O(1)$ time. Use the outline below!
+
+Alternatively, you can use the built-in `list` or `collections.deque` as the underlying container, as it was discussed in the lecture.
 
 ```py
 class Stack:

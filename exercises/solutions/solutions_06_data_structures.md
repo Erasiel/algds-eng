@@ -445,7 +445,9 @@ print(linked_list)                  # expected output: ['s3', 's4']
 
 ### Exercise 4
 
-Implement a stack that stores strings using the `LinkedList` implementation from the previous exercise as the underlying container. Make sure all methods run in $O(1)$ time. Use the following outline:
+Implement a stack that stores strings using the `LinkedList` implementation from the previous exercise as the underlying container. Make sure all methods run in $O(1)$ time. Use the outline below!
+
+Alternatively, you can use the built-in `list` or `collections.deque` as the underlying container, as it was discussed in the lecture.
 
 ```py
 class Stack:
@@ -561,6 +563,37 @@ class Queue:
 ```
 
 However, note that `dequeue` will take $O(n)$ time instead of $O(1)$, because we have to find the last element in the list. With a circular linked list, or a list that allows double-ended modifications in $O(1)$ time, the time complexity of `dequeue` can be improved to $O(1)$.
+
+As an alternative to using the `LinkedList` implementation of Exercise 3, the description allows us to use either the built-in `list` or `collections.deque` as the underlying container. The `Stack` implementation using the built-in `list` is as follows:
+
+```py
+class Stack:
+    def __init__(self):
+        self.container = list()
+
+    def push(self, key: str) -> None:
+        """Inserts the key at the top of the stack."""
+        self.container.append(key)
+
+    def pop(self) -> str:
+        """Deletes the key at the top of the stack."""
+
+        # If the stack is empty, raise an error
+        if len(self.container) == 0: raise ValueError("Empty stack!")
+
+        # Save the top item for the return statement before deleting it
+        top = self.container.pop()
+        return top
+
+    def top(self) -> str:
+        """Returns the key at the top of the stack."""
+
+        if len(self.container) == 0: raise ValueError("Empty stack!")
+
+        return self.container[-1]
+```
+
+We leave the implementation of the `Queue` class with `collections.deque` as the underlying container, and showing why the time complexity of all three of its required methods is $O(1)$ as homework for the reader.
 
 ---
 
