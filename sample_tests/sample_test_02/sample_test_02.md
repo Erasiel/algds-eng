@@ -2,17 +2,26 @@
 
 **Before you begin**
 
-During the test, you don't have access to any website other than CooSpace. In the `algds_test` folder, you are given all practice materials (including solutions), all slides of the lecture, the fourth edition of the Introduction to Algorithms book, and the test itself.
+During the test, you do not have access to the internet. After unzipping `algds_test_02.zip`, you will find two folders: `algds_materials/` and `algds_test_02/`.
 
-Before you start writing the test, mount your home directory (the `/home/hxxxxxx` directory). Any work in this directory will be automatically saved during the time of the test and is recoverable during and after the test by the instructor. Your solutions should be submitted through the CooSpace system, but files in your home directory can be considered if you fail to upload them. **All files outside your home directory are not secure during the test and will be lost when you shut down your PC.**
+The contents of the `algds_materials/` folder are:
+- `practice_materials/`: contains all practice exercises and their solutions
+- `lecture_materials/`: contains all lecture slides
+- `book.pdf`: the fourth edition of the Introduction to Algorithms book
 
-You are given four tasks, each worth exactly 8 points. **You have to choose three tasks to complete.** The choice is entirely up to you, but you can only get points for three tasks. You won't get extra points for attempting all four tasks. You can earn up to 24 points in this test, and, as per the requirements, you have to earn at least 8.
+The contents of the `algds_test_02/` folder are:
+- `src/`: contains prepared source files for all tasks with outlines and tests
+- `test_02.md`: the test itself
 
-Feel free to use built-in data structures (e.g. `set`, `list`, `dict`) and algorithms (e.g. `sort`, `index`) unless specified otherwise.
+You are given four tasks, each worth exactly 8 points. **You have to choose three tasks to complete.** The choice is up to you, but you can only get points for three tasks. You won't get extra points for completing all four tasks. You can earn up to 24 points in this test, and, as per the requirements, you have to earn at least 8.
 
-Each task contains a set of test cases as examples, but be aware that just because your algorithm passes all the example tests, it might not be correct. You are encouraged to write further test cases (specifically to test edge cases), but this is not required. You don't have to test the type of input parameters in your implementation, everything is as seen in the type hints.
+Create a folder in your home directory (`/home/hxxxxxx`) named `solutions`. Only work in your home directory! There, your work will be automatically saved during the time of the test and is recoverable during and after the test by the instructor. **All files outside your home directory are not secure during the test and will be lost when you shut down your PC.** You don't have to submit your solutions anywhere, leave them in the `/home/hxxxxxx/solutions` folder when you are done.
 
-You have 110 minutes to complete your work. You can upload your solutions in CooSpace either as separate files for each task, or as one file.
+Each task contains a set of test cases as examples, but be aware that just because your algorithm passes all the example tests, it might not be correct. You are encouraged to write further test cases (specifically to test edge cases), but this is not required and will not be scored.
+
+Feel free to use built-in data structures (e.g. `set`, `list`, `dict`) and algorithms (e.g. `sort`, `index`) unless specified otherwise. You should assume that the input parameters conform to the type hints and the constraints in the task descriptions.
+
+You have 110 minutes to complete your work. At the end of this time, the computers will shut down, and any unsaved work or work outside your home directory will be lost.
 
 Good luck!
 
