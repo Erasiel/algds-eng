@@ -131,7 +131,7 @@ Importantly, the time complexity remains $O(n \cdot m)$, but we managed to subst
 
 ### Exercise 4
 
-We are given a chess board with $n \times m$ positions, where each position is assigned a value. Every time we move to a position, we collect its value as points. Design and implement an algorithm using dynamic programming to find a path from the top-left position (at index `[0, 0]`) to the bottom-right position (at index `[n-1, k-1]`) that maximizes the collected points along the way. We can only move one position down or right at a time and we can not go backwards.
+We are given a chess board with $n \times m$ positions, where each position is assigned a value. Every time we move to a position, we collect its value as points. Design and implement an algorithm using dynamic programming to find a path from the top-left position (at index `[0, 0]`) to the bottom-right position (at index `[n-1, m-1]`) that maximizes the collected points along the way. We can only move one position down or right at a time and we can not go backwards.
 
 Return a tuple with two elements: the first is the sum of points along the way, and the second is the list of indices (two element tuples) corresponding to the positions that we move to on the path that yields the maximum points. If multiple paths exist that yield the same maximum, return only one such path.
 

@@ -137,8 +137,6 @@ def car_trip(distances: List[float], n: float, k: int) -> List[int]:
     return stops
 ```
 
-Note that if we only had to find the number of stops and not the indices of the stops, the task could be solved in constant time.
-
 ---
 
 ### Exercise 4
