@@ -183,6 +183,7 @@ class BinarySearchTree:
             u.parent.right = v
 
         # Set v's parent as u's original parent
-        v.parent = u.parent
+        if v is not None:
+            v.parent = u.parent
 ```
 
