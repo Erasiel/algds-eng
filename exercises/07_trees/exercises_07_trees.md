@@ -25,7 +25,7 @@ Define or briefly describe the following concepts:
 
 ### Exercise 2
 
-Determine which of the following properties are true for the graphs below (labeled (a) to (f)):
+Determine which of the following properties are true for the graphs below (labeled (a) to (f)). Assume the root node is always the uppermost node.
 1. Tree
 2. Binary tree
 3. Complete binary tree
@@ -37,7 +37,7 @@ Determine which of the following properties are true for the graphs below (label
 
 ### Exercise 3
 
-How can we represent rooted trees? Describe and illustrate at least two approaches. Can we represent binary trees differently?
+How can we represent rooted trees with unbounded branching (i.e. the number of children of every node is unbounded)? Describe and illustrate at least two approaches. Can we represent binary trees differently?
 
 ---
 
@@ -84,7 +84,7 @@ assert height(root) == 2, "The height of this tree should be 2"
 
 ### Exercise 5
 
-When is a binary tree *height-balanced*? Implement a recursive algorithm that checks whether a binary tree (given by its root node) is balanced. Use the `height` function from Exercise 4, along with the following outline:
+When is a binary tree *height-balanced*? Implement a *recursive* algorithm that checks whether a binary tree (given by its root node) is balanced. Use the `height` function from Exercise 4, along with the following outline:
 
 ```py
 def is_balanced(root: BinaryTreeNode) -> bool:
@@ -112,9 +112,13 @@ What is the time complexity of these operations?
 
 ### Exercise 7
 
-Implement a binary search tree for storing a set of integers. Use the outline below, but feel free to extend it with any (private) functions. Focus on `insert`, `contains`, `min`, `max`, and `delete`, as well as setting not only children, but parent references correctly.
+Below, you are given a half-complete implementation of a binary tree that implements a **set** that stores integers. Implement the following member functions:
+- `insert`: inserts a key into the BST
+- `contains`: returns `True` if the given key is in the BST, and `False` otherwise
+- `min`: returns the minimum key in the BST
+- `max`: returns the maximum key in the BST
 
-The private helper function `_replace` is already implemented for you. This function replaces the subtree with root `u` with the subtree with root `v` in the tree. It might come in handy with the implementation of `delete`.
+Make sure to correctly set not only the children pointers, but the parent pointers as well. Test your implementation on the tree and the operations of Exercise 6, which are given in the file `exercise_07.py`.
 
 ```py
 from typing import Optional
@@ -138,37 +142,70 @@ class BinarySearchTree:
         self.root = None
 
     def insert(self, key: int) -> None:
-        # If the tree is empty, create a new root
-        if self.root is None:
-            self.root = BinaryTreeNode(key)
+        """Inserts a new key into the tree."""
         # TODO
+        pass
 
     def contains(self, key: int) -> bool:
+        """Returns True if `key` is in the tree, and False otherwise."""
         # TODO
         pass
 
     def min(self) -> int:
+        """Returns the minimum key in the tree."""
         # TODO
         pass
 
     def max(self) -> int:
+        """Returns the maximum key in the tree."""
         # TODO
         pass
 
-    def delete(self, key) -> int:
-        # TODO
-        pass
+    def delete(self, key) -> None:
+        """Deletes a key from the tree."""
+        curr = self.root
 
-    def successor(self, key) -> int:
-        # TODO
-        pass
+        # Find the node that contains the key
+        while curr is not None:
+            if key == curr.key: break
+            elif key < curr.key: curr = curr.left
+            else: curr = curr.right
 
-    def predecessor(self, key) -> int:
-        # TODO
-        pass
+        # If the key is in the tree, delete the node that cointains it
+        if curr is not None:
+            self._delete_node(curr)
+
+    def _delete_node(self, node: BinaryTreeNode) -> None:
+        """Deletes the given node from the tree."""
+        if node.left is None:
+            self._replace(node, node.right)
+        elif node.right is None:
+            self._replace(node, node.left)
+        else:
+            successor = self._successor_node(node)
+            if successor != node.right:
+                self._replace(successor, successor.right)
+                successor.right = node.right
+                successor.right.parent = successor
+            self._replace(node, successor)
+            successor.left = node.left
+            successor.left.parent = successor
+
+    def _successor_node(self, node: BinaryTreeNode) -> BinaryTreeNode:
+        """Returns the successor of the given node."""
+        if node.right is not None:
+            curr = node.right
+            while curr.left is not None: curr = curr.left
+            return curr
+        else:
+            curr = node.parent
+            while curr is not None:
+                if curr.key > node.key: return curr
+                else: curr = curr.parent
+            return None
 
     def _replace(self, u: BinaryTreeNode, v: BinaryTreeNode) -> None:
-        """Replaces the subtree with root `u` with the subtree with root `v`."""
+        """Replaces the subtree rooted at `u` with the subtree rooted at `v`."""
 
         # u is the root node
         if u.parent is None:
