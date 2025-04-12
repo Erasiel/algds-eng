@@ -40,8 +40,6 @@ Insert the following integers (in the given order) into a hash table with 10 slo
 
 1, 5, 21, 42, 61, 64, 52.
 
-How would the hash table look if, instead of linear probing, we used quadratic probing with $c_1 = 1$ and $c_2 = 1$?
-
 ---
 
 ### Exercise 4
