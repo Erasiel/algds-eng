@@ -13,7 +13,18 @@ Define or briefly describe the following concepts:
 
 ### Exercise 2
 
-How can we represent graphs? Describe and implement at least two distinct approaches by creating subclasses of the `Graph` abstract class in the snippet below. Assume all nodes are identified by a string (e.g. `"A"`, `"B"`, etc.) and the data structure implements a simple graph (i.e. a graph without duplicate edges or self-loops).
+How can we represent graphs? Describe at least two different approaches. Compare these representations by designing algorithms for the following problems and analysing their time complexities afterwards:
+- For a vertex $u$, return a list of $u$'s neighbors
+- For two vertices $u$ and $v$, checks if the edge $u \rightarrow v$ is in the graph
+- Returns the list of all edges in the graph
+
+Which is the most commonly used graph representation?
+
+---
+
+### Exercise 3
+
+Implement the adjacency list representation by creating a subclass of the `Graph` abstract class in the code snippet below. Assume all vertices are identified by a string, and the data structure implements a *simple graph* (i.e. a graph without duplicate edges or self-loops).
 
 ```py
 from abc import ABC, abstractmethod
@@ -26,51 +37,51 @@ class Graph(ABC):
         self.undirected = undirected
 
     @abstractmethod
-    def add_node(self, node_id: str) -> None:
+    def add_vertex(self, vertex_id: str) -> None:
         raise NotImplementedError("Abstract class Graph does not implement "
-                                  "add_node")
+                                  "add_vertex")
 
     @abstractmethod
-    def add_edge(self, node_from: str, node_to: str) -> None:
+    def add_edge(self, vertex_from: str, vertex_to: str) -> None:
         raise NotImplementedError("Abstract class Graph does not implement "
                                   "add_edge")
 
     @abstractmethod
-    def get_nodes(self) -> Set[str]:
+    def get_vertices(self) -> List[str]:
         raise NotImplementedError("Abstract class Graph does not implement "
-                                  "get_nodes")
+                                  "get_vertices")
 
     @abstractmethod
-    def get_edges(self) -> Set[Tuple[str, str]]:
+    def get_neighbors(self, vertex_id: str) -> List[str]:
         raise NotImplementedError("Abstract class Graph does not implement "
-                                  "get_edges")
+                                  "get_neighbors")
 
     @abstractmethod
-    def edge_exists(self, node_from: str, node_to: str) -> bool:
+    def edge_exists(self, vertex_from: str, vertex_to: str) -> bool:
         raise NotImplementedError("Abstract class Graph does not implement "
                                   "edge_exists")
 
     @abstractmethod
-    def get_neighbors(self, node_id: str) -> Set[str]:
+    def get_edges(self) -> List[Tuple[str, str]]:
         raise NotImplementedError("Abstract class Graph does not implement "
-                                  "get_neighbors")
+                                  "get_edges")
 ```
 
-When is one representation better than the other? Compare graph representations by analyzing the time complexity of `edge_exists` and `get_edges`.
-
----
-
-### Exercise 3
-
-Run breadth-first search (first without implementing it) on the following graph. Start from node `A`. What is the output of the algorithm?
-
-![Directed graph](img/09_graphs_exercise03.svg)
+As further practice, implement the adjacency matrix representation similarly (create another `Graph` subclass, etc.).
 
 ---
 
 ### Exercise 4
 
-Implement breadth-first search. Use the example of Exercise 3 for guidance and the outline below with one of the `Graph` subclasses from Exercise 2. The `BFSOut` type represents the properties of a node we compute with the algorithm. Feel free to use this type in tracking the properties of nodes during the algorithm. Extend the graph implementation with any public (or private) method if you deem it necessary.
+Run breadth-first search (first without implementing it) on the following graph. Start from vertex `A`. What is the output of the algorithm?
+
+![Directed graph](img/09_graphs_exercise04.svg)
+
+---
+
+### Exercise 5
+
+Implement breadth-first search. Use the example of Exercise 4 for guidance and the outline below with one of the `Graph` subclasses from Exercise 2. The `BFSOut` type represents the properties of a vertex that are computed by the algorithm. Feel free to use this type in tracking the properties of vertices during the algorithm.
 
 ```py
 from typing import Dict
@@ -83,22 +94,22 @@ class BFSOut:
         self.visited = visited
 
 
-def breadth_first_search(graph: Graph, start_node: str) -> Dict[str, BFSOut]:
+def breadth_first_search(graph: Graph, start_vertex: str) -> Dict[str, BFSOut]:
     # TODO
 ```
 
 Check the correctness of your implementation on the graph of Exercise 3. Use the following code snippet to create the graph:
 
 ```py
-# `graph` is an object of a subclass of Graph (Exercise 2)
-graph.add_node("A")
-graph.add_node("B")
-graph.add_node("C")
-graph.add_node("D")
-graph.add_node("E")
-graph.add_node("F")
-graph.add_node("G")
-graph.add_node("H")
+# `graph` is an object of a subclass of Graph (Exercise 3)
+graph.add_vertex("A")
+graph.add_vertex("B")
+graph.add_vertex("C")
+graph.add_vertex("D")
+graph.add_vertex("E")
+graph.add_vertex("F")
+graph.add_vertex("G")
+graph.add_vertex("H")
 graph.add_edge("A", "B")
 graph.add_edge("A", "C")
 graph.add_edge("B", "D")
@@ -113,15 +124,15 @@ graph.add_edge("H", "F")
 
 ---
 
-### Exercise 5
+### Exercise 6
 
-Run depth-first search (first without implementing it) on the graph of Exercise 3. Assume that nodes and neighbors are ordered alphabetically. What is the output of the algorithm?
+Run depth-first search (first without implementing it) on the graph of Exercise 3. Assume that vertices and their neighbors are ordered alphabetically. What is the output of the algorithm?
 
 ---
 
-### Exercise 6
+### Exercise 7
 
-Implement depth-first search. Use the example of Exercise 3 for guidance and the outline below with one of the `Graph` subclasses from Exercise 2. The `DFSOut` type represents the properties of a node we compute with the algorithm. Feel free to use this type in tracking the properties of nodes during the algorithm. Extend the graph implementation with any public (or private) method if you deem it necessary.
+Implement depth-first search. Use the example of Exercise 6 for guidance and the outline below with one of the `Graph` subclasses from Exercise 2. The `DFSOut` type represents the properties of a vertex that are computed by the algorithm. Feel free to use this type in tracking the properties of vertices during the algorithm.
 
 
 ```py
@@ -147,20 +158,28 @@ def depth_first_search(graph: Graph) -> Dict[str, DFSOut]:
 
 ---
 
-### Exercise 7
+### Exercise 8
 
-Design and implement an algorithm that determines if a given ordering of a graph's nodes is a valid *topological sort* of the the graph. Use the outline below:
+Design and implement an algorithm that determines if a given ordering of a graph's vertices is a valid *topological ordering* of the graph. Use the outline below:
 
 ```py
 from typing import List
 
 
-def is_topological_sort(graph: Graph, nodes: List[str]) -> bool:
+def is_topological_ordering(graph: Graph, ordered_vertices: List[str]) -> bool:
     # TODO
 ```
 
 ---
 
-### Exercise 8
+### Exercise 9
 
-Design and implement an algorithm that determines a correct topological sort of a directed acyclic graph (DAG). Use the implementation of dept-first search from Exercise 6. You don't have to check whether the graph is truly a DAG.
+Design and implement an algorithm that determines a correct topological ordering of a directed acyclic graph (DAG). Use the implementation of dept-first search from Exercise 6. You don't have to check whether the graph is truly a DAG. Use the outline below:
+
+```py
+from typing import List
+
+
+def topological_sort(graph: Graph) -> List[str]:
+    # TODO
+```
