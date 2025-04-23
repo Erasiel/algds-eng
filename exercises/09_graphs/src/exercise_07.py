@@ -4,21 +4,33 @@ from exercise_03 import Graph, AdjacencyListGraph
 
 
 class DFSOut:
-    def __init__(self,
-                 parent: str,
-                 discovered: int,
-                 finished: int,
-                 visited: bool
-    ) -> None:
+    def __init__(self, parent: str, discovered: int, finished: int) -> None:
         self.parent = parent
         self.discovered = discovered
         self.finished = finished
-        self.visited = visited
 
 
 def depth_first_search(graph: Graph) -> Dict[str, DFSOut]:
+
+    def dfs_visit(graph: Graph, vertex: str) -> None:
+        # We want to reference and modify `time`, so we must mark it as a
+        # not locally declared variable:
+        # nonlocal time
+
+        # TODO
+        pass
+
+    parent = dict()
+    discovered = dict()
+    finished = dict()
+
     # TODO
-    pass
+
+    # Return a dict of DFSOut objects
+    # This is not strictly required, we could return the `parent` and
+    # `distance` dictionaries instead
+    return {v: DFSOut(parent[v], discovered[v], finished[v])
+            for v in graph.get_vertices()}
 
 
 if __name__ == "__main__":

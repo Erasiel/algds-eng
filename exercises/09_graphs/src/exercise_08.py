@@ -4,8 +4,8 @@ from exercise_03 import Graph, AdjacencyListGraph
 
 
 def is_topological_ordering(graph: Graph, ordered_vertices: List[str]) -> bool:
-    # Edge cases: the ordered list does not contain all vertices, or it contains
-    # a vertex more than once
+    # Edge cases: the ordered list does not contain all vertices, or it
+    # contains a vertex more than once
 
     # TODO
     pass

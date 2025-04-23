@@ -1,3 +1,4 @@
+import math
 from typing import Any, Dict
 from collections import deque
 
@@ -22,15 +23,21 @@ class Queue:
 
 
 class BFSOut:
-    def __init__(self, parent: str, dist: int, visited: bool) -> None:
+    def __init__(self, parent: str, dist: int) -> None:
         self.parent = parent
         self.dist = dist
-        self.visited = visited
 
 
 def breadth_first_search(graph: Graph, start_vertex: str) -> Dict[str, BFSOut]:
+    distance = dict()
+    parent = dict()
+
     # TODO
-    pass
+
+    # Return a dict of BFSOut objects
+    # This is not strictly required, we could return the `parent` and
+    # `distance` dictionaries instead
+    return {v: BFSOut(parent[v], distance[v]) for v in graph.get_vertices()}
 
 
 if __name__ == "__main__":
@@ -61,4 +68,3 @@ if __name__ == "__main__":
         print(f"{node}:\t"
               f"parent: {bfs_output[node].parent}\t"
               f"distance: {bfs_output[node].dist}")
-
