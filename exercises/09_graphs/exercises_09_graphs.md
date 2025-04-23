@@ -101,7 +101,9 @@ def breadth_first_search(graph: Graph, start_vertex: str) -> Dict[str, BFSOut]:
 Check the correctness of your implementation on the graph of Exercise 3. Use the following code snippet to create the graph:
 
 ```py
-# `graph` is an object of a subclass of Graph (Exercise 3)
+# `graph` is an object of a subclass of Graph
+# e.g. AdjacencyListGraph (Exercise 3)
+graph = AdjacencyListGraph()
 graph.add_vertex("A")
 graph.add_vertex("B")
 graph.add_vertex("C")

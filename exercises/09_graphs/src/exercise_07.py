@@ -44,10 +44,10 @@ if __name__ == "__main__":
     graph.add_edge("H", "F")
 
     bfs_output = depth_first_search(graph)
-    print("BFS output:")
+    print("DFS output:")
     for node in graph.get_vertices():
         print(f"{node}:\t"
-              f"parent:{bfs_output[node].parent}\t"
+              f"parent: {bfs_output[node].parent}\t"
               f"discovered: {bfs_output[node].discovered}\t"
               f"finished: {bfs_output[node].finished}")
 

@@ -85,7 +85,7 @@ if __name__ == "__main__":
     # Test 2: undirected graph
     # A -- B -- C
     print("Undirected graph:")
-    graph = AdjacencyListGraph(undirected=False)
+    graph = AdjacencyListGraph(undirected=True)
     graph.add_vertex("A")
     graph.add_vertex("B")
     graph.add_vertex("C")

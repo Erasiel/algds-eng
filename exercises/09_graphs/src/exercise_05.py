@@ -11,11 +11,14 @@ class Queue:
     def enqueue(self, x: Any) -> None:
         self.queue.extend(x)
 
-    def dequeue(self, x: Any) -> Any:
+    def dequeue(self) -> Any:
         return self.queue.popleft()
 
     def first(self) -> Any:
         return self.queue[0]
+
+    def __len__(self) -> int:
+        return len(self.queue)
 
 
 class BFSOut:
@@ -52,10 +55,10 @@ if __name__ == "__main__":
     graph.add_edge("G", "H")
     graph.add_edge("H", "F")
 
-    bfs_output = breadth_first_search(graph)
+    bfs_output = breadth_first_search(graph, "A")
     print("BFS output:")
     for node in graph.get_vertices():
         print(f"{node}:\t"
-              f"parent:{bfs_output[node].parent}\t"
+              f"parent: {bfs_output[node].parent}\t"
               f"distance: {bfs_output[node].dist}")
 
