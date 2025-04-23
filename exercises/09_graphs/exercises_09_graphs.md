@@ -81,7 +81,7 @@ Run breadth-first search (first without implementing it) on the following graph.
 
 ### Exercise 5
 
-Implement breadth-first search. Use the example of Exercise 4 for guidance and the outline below with one of the `Graph` subclasses from Exercise 2. The `BFSOut` type represents the properties of a vertex that are computed by the algorithm. Feel free to use this type in tracking the properties of vertices during the algorithm.
+Using the outline below, implement breadth first search (BFS). Use the example of Exercise 4 and/or the lecture slides for guidance. The `BFSOut` type represents the properties of a vertex that are computed by the algorithm.
 
 ```py
 from typing import Dict
@@ -91,11 +91,18 @@ class BFSOut:
     def __init__(self, parent: str, dist: int, visited: bool) -> None:
         self.parent = parent
         self.dist = dist
-        self.visited = visited
 
 
 def breadth_first_search(graph: Graph, start_vertex: str) -> Dict[str, BFSOut]:
+    distance = dict()
+    parent = dict()
+
     # TODO
+
+    # Return a dict of BFSOut objects
+    # This is not strictly required, we could return the `parent` and
+    # `distance` dictionaries instead
+    return {v: BFSOut(parent[v], distance[v]) for v in graph.get_vertices()}
 ```
 
 Check the correctness of your implementation on the graph of Exercise 3. Use the following code snippet to create the graph:
@@ -134,28 +141,40 @@ Run depth-first search (first without implementing it) on the graph of Exercise 
 
 ### Exercise 7
 
-Implement depth-first search. Use the example of Exercise 6 for guidance and the outline below with one of the `Graph` subclasses from Exercise 2. The `DFSOut` type represents the properties of a vertex that are computed by the algorithm. Feel free to use this type in tracking the properties of vertices during the algorithm.
-
+Using the outline below, implement depth first search (DFS). Use the example of Exercise 6 and/or the lecture slides for guidance. The `DFSOut` type represents the properties of a vertex that are computed by the algorithm.
 
 ```py
 from typing import Dict
 
 
 class DFSOut:
-    def __init__(self,
-                 parent: str,
-                 discovered: int,
-                 finished: int,
-                 visited: bool
-    ) -> None:
+    def __init__(self, parent: str, discovered: int, finished: int) -> None:
         self.parent = parent
         self.discovered = discovered
         self.finished = finished
-        self.visited = visited
 
 
 def depth_first_search(graph: Graph) -> Dict[str, DFSOut]:
+
+    def dfs_visit(graph: Graph, vertex: str) -> None:
+        # We want to reference and modify `time`, so we must mark it as a
+        # not locally declared variable
+        nonlocal time
+
+        # TODO
+        pass
+
+    parent = dict()
+    discovered = dict()
+    finished = dict()
+
     # TODO
+
+    # Return a dict of DFSOut objects
+    # This is not strictly required, we could return the `parent` and
+    # `distance` dictionaries instead
+    return {v: DFSOut(parent[v], discovered[v], finished[v])
+            for v in graph.get_vertices()}
 ```
 
 ---
