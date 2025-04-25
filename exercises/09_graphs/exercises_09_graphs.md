@@ -204,3 +204,27 @@ from typing import List
 def topological_sort(graph: Graph) -> List[str]:
     # TODO
 ```
+
+---
+
+### Exercise 10
+
+The "Wikipedia game" is a famous game among students. All players start at the same randomly selected Wikipedia page and their goal is to reach a randomly selected destination page as quickly as possible. The only way to move from page A to page B is by clicking a link on page A that takes the player to page B. The player with the least moves from the starting page to the designated page wins the game.
+
+You are given a list of Wikipedia pages and a list of links that can take you from page A to page B. Note that just because there exists a link on page A to page B, there might not exist a link on page B to page A. You are also given the starting and destination pages. Design and develop an algorithm that returns the optimal solution to the Wikipedia game (i.e. the lowest number of moves that takes the player to the destination page from the starting page). If the game cannot be completed, return -1.
+
+Use the following outline:
+
+```py
+from typing import List, Tuple
+
+
+def wikipedia_game(pages: List[str],
+                   links: List[Tuple[str, str]],
+                   start: str,
+                   dest: str
+) -> int:
+    # TODO
+```
+
+Side note: web crawlers work in a similar way, but instead of knowing the list of links upfront, they discover links between pages "on-the-fly" as they visit them.
