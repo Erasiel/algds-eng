@@ -10,7 +10,7 @@ class Queue:
         self.queue = deque()
 
     def enqueue(self, x: Any) -> None:
-        self.queue.extend(x)
+        self.queue.append(x)
 
     def dequeue(self) -> Any:
         return self.queue.popleft()
