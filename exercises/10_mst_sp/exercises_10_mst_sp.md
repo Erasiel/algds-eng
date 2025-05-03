@@ -10,7 +10,49 @@ Define or briefly describe the following concepts:
 
 ### Exercise 2
 
-Extend the `Graph` abstract class and one of its implementations from the previous week to represent edge-weighted graphs. All weigths are integer values.
+Given the `WeightedGraph` abstract class, extend the adjacency list representation from the previous week to represent edge-weighted graphs. Assume all weights are integers.
+
+```py
+class WeightedGraph(ABC):
+    def __init__(self, undirected: bool = False) -> None:
+        super().__init__()
+        self.undirected = undirected
+
+    @abstractmethod
+    def add_vertex(self, vertex_id: str) -> None:
+        raise NotImplementedError("Abstract class Graph does not implement "
+                                  "add_vertex")
+
+    @abstractmethod
+    def add_edge(self, vertex_from: str, vertex_to: str, weight: int) -> None:
+        raise NotImplementedError("Abstract class Graph does not implement "
+                                  "add_edge")
+
+    @abstractmethod
+    def get_vertices(self) -> List[str]:
+        raise NotImplementedError("Abstract class Graph does not implement "
+                                  "get_vertices")
+
+    @abstractmethod
+    def get_neighbors(self, vertex_id: str) -> List[Tuple[str, int]]:
+        raise NotImplementedError("Abstract class Graph does not implement "
+                                  "get_neighbors")
+
+    @abstractmethod
+    def edge_exists(self, vertex_from: str, vertex_to: str) -> bool:
+        raise NotImplementedError("Abstract class Graph does not implement "
+                                  "edge_exists")
+
+    @abstractmethod
+    def get_edges(self) -> List[Tuple[str, str, int]]:
+        raise NotImplementedError("Abstract class Graph does not implement "
+                                  "get_edges")
+
+    @abstractmethod
+    def get_edge_weight(self, vertex_from: str, vertex_to: str) -> int:
+        raise NotImplementedError("Abstract class Graph does not implement "
+                                  "get_edge_weight")
+```
 
 ---
 
@@ -58,15 +100,15 @@ def kruskal_mst(graph: Graph) -> List[Tuple[str, str, int]]:
 Check the correctness of your implementation on the graph of Exercise 3. Use the following code snippet to create the graph:
 
 ```py
-# `graph` is an object of a subclass of Graph with undirected=True (Exercise 2)
-graph.add_node("A")
-graph.add_node("B")
-graph.add_node("C")
-graph.add_node("D")
-graph.add_node("E")
-graph.add_node("F")
-graph.add_node("G")
-graph.add_node("H")
+# `graph` is an object of a subclass of WeightedGraph with undirected=True (Exercise 2)
+graph.add_vertex("A")
+graph.add_vertex("B")
+graph.add_vertex("C")
+graph.add_vertex("D")
+graph.add_vertex("E")
+graph.add_vertex("F")
+graph.add_vertex("G")
+graph.add_vertex("H")
 graph.add_edge("A", "B", 3)
 graph.add_edge("A", "D", 2)
 graph.add_edge("B", "D", 1)
@@ -84,69 +126,68 @@ graph.add_edge("F", "G", 4)
 
 ### Exercise 5
 
-Run Prim's algorithm (first without implementing it) on the graph of Exercise 3. Start from node `H`. Describe the greedy choice and its related implementation.
+Run Prim's algorithm (first without implementing it) on the graph of Exercise 3. Start from vertex `H`. Describe the greedy choice and its related implementation.
 
 ---
 
 ### Exercise 6
 
-You are given a basic outline of Prim's algorithm. The algorithm seems to follow the original pseudocode, so you can assume it to be correct. However, a key component, namely, the `PriorityQueue` implementation is missing. Finish the implementation without modifying the `prim_mst` algorithm. Make sure the algorithm is correct.
+You are given the complete implementation of Prim's algorithm. What would be the algorithm's output on a graph that does not have a minimum spanning tree? Try it on a simple example.
+
+What would be the output of Kruskal's algorithm in the same case?
 
 ```py
-import math
 from typing import List, Tuple
 
 
-class PriorityQueue:
-    # TODO
-    pass
+def prim_mst(graph: WeightedGraph,
+             start_vertex: str
+) -> List[Tuple[str, str, int]]:
 
+    # Create a minimum priority queue for storing vertices where the priority of
+    # a vertex is the cost of adding it to the MST. During the algorithm, the
+    # priority of a vertex is the cost of adding that vertex to the MST.
+    priqueue = PriorityQueue()
 
-def prim_mst(graph: Graph, start_node: str) -> List[Tuple[str, str, int]]:
-
-    # Create a minimum priority queue for storing nodes where the priority of a
-    # node is the cost of adding it to the MST.
-    node_priqueue = PriorityQueue(min_first=True)
-
-    # Store the parents of each node.
-    node_parent = dict()
+    # Store the parents of each vertex
+    parent = dict()
 
     # Store the list of MST edges
     mst_edges = list()
 
-    # Initialize each node with infinite priority and no parent
-    for node in graph.get_nodes():
-        node_priqueue.insert(node, math.inf)
-        node_parent[node] = None
+    # Initialize each vertex with infinite priority and no parent
+    for vertex in graph.get_vertices():
+        priqueue.insert(vertex, math.inf)
+        parent[vertex] = None
 
-    # Set the start node's priority to 0
-    node_priqueue.set_priority(start_node, 0)
+    # Set the start vertex's priority to 0
+    priqueue.set_priority(start_vertex, 0)
 
-    # Repeat the following until all nodes are added to the MST
-    while not node_priqueue.is_empty():
+    # Repeat the following until all vertices are added to the MST
+    while len(priqueue) > 0:
 
-        # The node with the lowest cost is the next to be added to the MST
-        mst_node = node_priqueue.top()
-        mst_edge_weight = node_priqueue.get_priority(mst_node)
-        node_priqueue.remove_top()
+        # The vertex with the lowest cost is the next to be added to the MST
+        mst_vertex = priqueue.min()
+        mst_edge_weight = priqueue.get_priority(mst_vertex)
+        priqueue.extract_min()
 
-        # If the node has a valid parent, add the corresponding edge to the MST
-        # edges
-        if node_parent[mst_node] is not None:
-            mst_edges.append((node_parent[mst_node], mst_node, mst_edge_weight))
+        # If the vertex has a valid parent, add the corresponding edge to the
+        # MST edges
+        if parent[mst_vertex] is not None:
+            mst_edges.append((parent[mst_vertex], mst_vertex, mst_edge_weight))
 
-        # Iterate over the neighbors of the new MST node
-        for node, edge_weight in graph.get_neighbors(mst_node):
+        # Iterate over the neighbors of the new MST vertex
+        for vertex, edge_weight in graph.get_neighbors(mst_vertex):
 
-            # We don't care about a neighbor that's already in the MST
-            if not node_priqueue.contains(node): continue
+            # We don't care about a neighbor that is already in the MST
+            if not vertex in priqueue: continue
 
             # If the edge to the neighbor has a lower weight than the previous
             # lowest weight, update the neighbor
-            found_weight = node_priqueue.get_priority(node)
+            found_weight = priqueue.get_priority(vertex)
             if edge_weight < found_weight:
-                node_priqueue.set_priority(node, edge_weight)
-                node_parent[node] = mst_node
+                priqueue.set_priority(vertex, edge_weight)
+                parent[vertex] = mst_vertex
 
     # Return the edges of the MST
     return mst_edges
@@ -156,13 +197,13 @@ def prim_mst(graph: Graph, start_node: str) -> List[Tuple[str, str, int]]:
 
 ### Exercise 7
 
-How can you define the shortest path between two nodes in a graph? What variants of the shortest path(s) problem do you know? Which algorithms solve which variant?
+How can you define the shortest path between two vertices in a graph? What variants of the shortest path(s) problem do you know? Which algorithms solve which variant?
 
 ---
 
 ### Exercise 8
 
-Run Dijkstra's algorithm (first without implementing it) on the following graph. Start from node `A`. Describe the greedy choice and its related implementation.
+Run Dijkstra's algorithm (first without implementing it) on the following graph. Start from vertex `A`. Describe the greedy choice and its related implementation.
 
 ![SP exercise graph](img/10_mst_sp_exercise08.svg)
 
@@ -170,19 +211,47 @@ Run Dijkstra's algorithm (first without implementing it) on the following graph.
 
 ### Exercise 9
 
-Implement Dijkstra's algorithm. Since the algorithms of Dijkstra and Prim are very similar, use your implementation of Prim's algorithm as a starting point.
-
-Check the correctness of your implementation on the graph of Exercise 3. Use the following code snippet to create the graph:
+Using the outline below, implement Dijkstra's algorithm. The `DijkstraOut` type represents the properties of a vertex that are computed by the algorithm.
 
 ```py
-# `graph` is an object of a subclass of Graph with undirected=False (Exercise 2)
-graph.add_node("A")
-graph.add_node("B")
-graph.add_node("C")
-graph.add_node("D")
-graph.add_node("E")
-graph.add_node("F")
-graph.add_node("G")
+from typing import Dict
+
+
+class DijkstraOut:
+    def __init__(self, parent: str, dist: int) -> None:
+        self.parent = parent
+        self.dist = dist
+
+
+def dijkstra_sssp(graph: WeightedGraph,
+                  start_vertex: str
+) -> Dict[str, DijkstraOut]:
+    distance = dict()
+    parent = dict()
+
+    # TODO
+
+    # Return a dict of DijkstraOut objects
+    # This is not strictly required, we could return the `parent` and
+    # `distance` dictionaries instead
+    return {v: DijkstraOut(parent[v], distance[v])
+            for v in graph.get_vertices()}
+```
+
+Hints:
+- You can use the implementation of breadth-first search from the previous week. The difference between BFS and Dijkstra's algorithm is the used data structure: BFS uses a queue, Dijkstra uses a minimum priority queue where the priority of a vertex is its distance from the starting vertex.
+- You can also use the implementation of Prim's algorithm from Exercise 6. The main difference between Prim and Dijkstra is the priority of each vertex: in Prim's algorithm, it's the cost of adding the vertex to the MST, in Dijkstra's algorithm, it's the vertex's distance from the starting vertex.
+
+
+```py
+# `graph` is an object of a subclass of WeightedGraph with undirected=True (Exercise 2)
+graph.add_vertex("A")
+graph.add_vertex("B")
+graph.add_vertex("C")
+graph.add_vertex("D")
+graph.add_vertex("E")
+graph.add_vertex("F")
+graph.add_vertex("G")
 graph.add_edge("A", "B", 3)
 graph.add_edge("A", "D", 7)
 graph.add_edge("A", "E", 10)
