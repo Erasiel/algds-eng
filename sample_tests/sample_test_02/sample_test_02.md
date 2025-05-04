@@ -29,14 +29,17 @@ Good luck!
 
 ### Task 1 - Nodes at Depth $k$
 
-In a tree, the *depth* of a node $v$ is the length of the path from the root to $v$. The depth of the root is always zero. Design and implement an algorithm that determines the number of nodes at depth $k$ in a binary tree (given by its root node). Make sure your algorithm runs in at most $O(n)$ time, where $n$ is the number of nodes in the tree.
+In a tree, the *depth* of a node $v$ is the length of the path from the root to $v$. The depth of the root is always zero, the depth of the root's children is one, etc. Design and implement an algorithm that determines the number of nodes at depth $k$ in a binary tree (given by its root node). Make sure your algorithm runs in at most $O(n)$ time, where $n$ is the number of nodes in the tree.
 
 Use the following outline:
 
 ```py
+from typing import Any, Optional
+
+
 class BinaryTreeNode:
     def __init__(self,
-                 key: int,
+                 key: Any,
                  parent: Optional["BinaryTreeNode"] = None,
                  left: Optional["BinaryTreeNode"] = None,
                  right: Optional["BinaryTreeNode"] = None
@@ -54,15 +57,27 @@ def num_nodes_at_depth(root: BinaryTreeNode, k: int) -> int:
 
 Tests:
 ```py
-leaf1 = BinaryTreeNode(1)
-leaf2 = BinaryTreeNode(1)
-leaf3 = BinaryTreeNode(1)
-inner1 = BinaryTreeNode(1, left=leaf1, right=leaf2)
-root = BinaryTreeNode(1, left=inner1, right=leaf3)
-
+leaf1 = BinaryTreeNode("E")
+leaf2 = BinaryTreeNode("D")
+leaf3 = BinaryTreeNode("C")
+inner1 = BinaryTreeNode("B", left=leaf1, right=leaf2)
+root = BinaryTreeNode("A", left=inner1, right=leaf3)
 assert num_nodes_at_depth(root, 0) == 1
 assert num_nodes_at_depth(root, 1) == 2
 assert num_nodes_at_depth(root, 2) == 2
+assert num_nodes_at_depth(root, 3) == 0
+
+leaf2 = BinaryTreeNode("G")
+leaf3 = BinaryTreeNode("F")s
+inner2 = BinaryTreeNode("E", left=leaf2)
+leaf1 = BinaryTreeNode("D")
+inner3 = BinaryTreeNode("C", left=inner2, right=leaf3)
+inner1 = BinaryTreeNode("B", left=leaf1)
+root = BinaryTreeNode("A", left=inner1, right=inner3)
+assert num_nodes_at_depth(root, 0) == 1
+assert num_nodes_at_depth(root, 1) == 2
+assert num_nodes_at_depth(root, 2) == 3
+assert num_nodes_at_depth(root, 3) == 1
 ```
 
 Explanations:
@@ -107,16 +122,15 @@ mtx3 = [
 assert repeating_row_filter(mtx3, 5, 4) == [[0, 0, 1, 1],
                                             [1, 0, 1, 0],
                                             [1, 1, 1, 1]]
-
 ```
 
 ---
 
 ### Task 3 - Circle
 
-Design and implement an algorithm that decides whether there is a circle in a directed graph. A circle is present if there are two nodes, $u$ and $v$, such that there exists a path from $u$ to $v$, and a path from $v$ to $u$.
+Design and implement an algorithm that decides whether there is a circle in a directed graph. A circle is present if there are two vertices, $u$ and $v$, such that there exists a path from $u$ to $v$, and a path from $v$ to $u$.
 
-Use the outline below, where `Graph` is an abstract class whose subclasses implement a simple Graph. The full implementation, including a fully implemented `Graph` subclass (named `GraphImpl`) is given in `src/task04.py`.
+Use the outline below, where `Graph` is an abstract class whose subclasses implement a simple Graph. The full class, along with a fully implemented `Graph` subclass (named `AdjacencyListGraph`) is given in `src/task04.py`.
 
 ```py
 def contains_circle(graph: Graph) -> bool:
@@ -126,13 +140,13 @@ def contains_circle(graph: Graph) -> bool:
 
 Tests:
 ```py
-graph = GraphImpl(undirected=False)
+graph = AdjacencyListGraph(undirected=False)
 graph.add_node("A")
 graph.add_node("B")
 graph.add_node("C")
 assert not contains_circle(graph)
 
-graph = GraphImpl(undirected=False)
+graph = AdjacencyListGraph(undirected=False)
 graph.add_node("A")
 graph.add_node("B")
 graph.add_node("C")
@@ -141,7 +155,7 @@ graph.add_edge("A", "C")
 graph.add_edge("B", "C")
 assert not contains_circle(graph)
 
-graph = GraphImpl(undirected=False)
+graph = AdjacencyListGraph(undirected=False)
 graph.add_node("A")
 graph.add_node("B")
 graph.add_node("C")
@@ -155,7 +169,7 @@ assert contains_circle(graph)
 
 ### Task 4 - Network Rebuild
 
-The country of Madeupland wants to rebuild its internet network from scratch. The requirements towards the new network is simple: it has to have a path between all pairs of cities, and it has to be as cheap as possible.
+The country of Madeupland wants to rebuild its internet network from scratch. The requirements towards the new network are simple: it has to have a path between all pairs of cities, and it has to be as cheap as possible.
 
 The design committee creates a map of every city in the country and connects cities that can be connected with regular networks. They calculate and note down the cost of building each of the possible connections and are appalled at how expensive the project is going to be.
 
@@ -165,6 +179,9 @@ Design and implement an algorithm that calculates the lowest possible cost for b
 
 Use the following outline:
 ```py
+import math
+
+
 def network_rebuild(cities: List[str],
                     costs: List[Tuple[str, str, float]],
                     k: int,
