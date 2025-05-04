@@ -93,7 +93,7 @@ class DisjointSet:
         return self.elements[u]
 
 
-def kruskal_mst(graph: Graph) -> List[Tuple[str, str, int]]:
+def kruskal_mst(graph: WeightedGraph) -> List[Tuple[str, str, int]]:
     # TODO
 ```
 
