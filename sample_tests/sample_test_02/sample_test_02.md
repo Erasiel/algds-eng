@@ -40,12 +40,10 @@ from typing import Any, Optional
 class BinaryTreeNode:
     def __init__(self,
                  key: Any,
-                 parent: Optional["BinaryTreeNode"] = None,
                  left: Optional["BinaryTreeNode"] = None,
                  right: Optional["BinaryTreeNode"] = None
     ) -> None:
         self.key = key
-        self.parent = parent
         self.left = left
         self.right = right
 
@@ -57,18 +55,35 @@ def num_nodes_at_depth(root: BinaryTreeNode, k: int) -> int:
 
 Tests:
 ```py
+# Test 1
+# Tree structure:
+#     A
+#    / \
+#   B   C
+#  / \
+# E   D
 leaf1 = BinaryTreeNode("E")
 leaf2 = BinaryTreeNode("D")
 leaf3 = BinaryTreeNode("C")
 inner1 = BinaryTreeNode("B", left=leaf1, right=leaf2)
 root = BinaryTreeNode("A", left=inner1, right=leaf3)
+
 assert num_nodes_at_depth(root, 0) == 1
 assert num_nodes_at_depth(root, 1) == 2
 assert num_nodes_at_depth(root, 2) == 2
 assert num_nodes_at_depth(root, 3) == 0
 
+# Test 2
+# Tree structure:
+#     A
+#    / \
+#   B   C
+#  /   / \
+# D   E   F
+#    /
+#   G
 leaf2 = BinaryTreeNode("G")
-leaf3 = BinaryTreeNode("F")s
+leaf3 = BinaryTreeNode("F")
 inner2 = BinaryTreeNode("E", left=leaf2)
 leaf1 = BinaryTreeNode("D")
 inner3 = BinaryTreeNode("C", left=inner2, right=leaf3)
@@ -81,9 +96,16 @@ assert num_nodes_at_depth(root, 3) == 1
 ```
 
 Explanations:
-1. There's only the root node at depth 0.
-2. The root's two children are at depth 1.
-3. The two children of the root's left child are at depth 2. The root's right child has no children, so there are only two nodes at depth 2.
+- Test #1:
+    1. There's only the root node (A) at depth 0.
+    2. The root's two children (B and C) are at depth 1.
+    3. D and E are at depth 2.
+    4. There are no nodes at depth 3.
+- Test #2:
+    1. There's only the root node (A) at depth 0.
+    2. The root's two children (B and C) are at depth 1.
+    3. D, E, and F are at depth 2.
+    4. G is at depth 3.
 
 ---
 
@@ -141,24 +163,24 @@ def contains_circle(graph: Graph) -> bool:
 Tests:
 ```py
 graph = AdjacencyListGraph(undirected=False)
-graph.add_node("A")
-graph.add_node("B")
-graph.add_node("C")
+graph.add_vertex("A")
+graph.add_vertex("B")
+graph.add_vertex("C")
 assert not contains_circle(graph)
 
 graph = AdjacencyListGraph(undirected=False)
-graph.add_node("A")
-graph.add_node("B")
-graph.add_node("C")
+graph.add_vertex("A")
+graph.add_vertex("B")
+graph.add_vertex("C")
 graph.add_edge("A", "B")
 graph.add_edge("A", "C")
 graph.add_edge("B", "C")
 assert not contains_circle(graph)
 
 graph = AdjacencyListGraph(undirected=False)
-graph.add_node("A")
-graph.add_node("B")
-graph.add_node("C")
+graph.add_vertex("A")
+graph.add_vertex("B")
+graph.add_vertex("C")
 graph.add_edge("A", "B")
 graph.add_edge("B", "C")
 graph.add_edge("C", "A")

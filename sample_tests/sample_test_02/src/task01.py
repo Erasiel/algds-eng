@@ -4,12 +4,10 @@ from typing import Any, Optional
 class BinaryTreeNode:
     def __init__(self,
                  key: Any,
-                 parent: Optional["BinaryTreeNode"] = None,
                  left: Optional["BinaryTreeNode"] = None,
                  right: Optional["BinaryTreeNode"] = None
     ) -> None:
         self.key = key
-        self.parent = parent
         self.left = left
         self.right = right
 
