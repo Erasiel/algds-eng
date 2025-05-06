@@ -113,6 +113,9 @@ Explanations:
 
 Design and implement an algorithm that filters the repeating rows in a two-dimensional binary array (i.e. an array that only contains ones and zeros). The $i^\text{th}$ row is *repeating* if there exists $j < i$ such that the $j^\text{th}$ row is the same as the $i^\text{th}$ row. Your algorithm should return a copy of the input matrix with the repeating rows removed. Make sure your algorithm runs in $O(nm)$ time in the average case, where $n$ and $m$ are the dimensions of the matrix.
 
+**Constraints:**
+- $n, m > 0$
+
 Use the following outline:
 ```py
 def repeating_row_filter(mtx: List[List[int]], n: int, m: int) -> List[List[int]]:
@@ -198,6 +201,11 @@ The design committee creates a map of every city in the country and connects cit
 Luckily for the committee, Melon Husk, a wealthy investor decided to help the project. His company offers a very efficient type of Fiber-Optic Cable that can connect *any* pair of cities. Mr. Husk made a shady deal with the government and pledged to connect $k$ pairs of cities in Madeupland for free. The committe now has to submit a cost estimation for creating the network.
 
 Design and implement an algorithm that calculates the lowest possible cost for building the network. The input is a list of $n$ strings representing the name of the cities, a list of $m$ three-element tuples (where the first two elements are names of cities and the third is a real number that representing the cost of building the standard network between the two cities), and an integer $k$, the number of free Fiber-Optic Cables. Both standard, and Fiber-Optic connections are bidirectional. Return the total cost of building the network or `math.inf` if the network cannot be built.
+
+**Constraints:**
+- $k \geq 0$
+- $n > 0$
+- $m \geq 0$
 
 Use the following outline:
 ```py
