@@ -221,7 +221,7 @@ from typing import Dict
 
 
 class BFSOut:
-    def __init__(self, parent: str, dist: int, visited: bool) -> None:
+    def __init__(self, parent: str, dist: int) -> None:
         self.parent = parent
         self.dist = dist
 
@@ -274,7 +274,7 @@ from typing import Dict
 
 
 class BFSOut:
-    def __init__(self, parent: str, dist: int, visited: bool) -> None:
+    def __init__(self, parent: str, dist: int) -> None:
         self.parent = parent
         self.dist = dist
 

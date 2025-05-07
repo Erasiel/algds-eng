@@ -155,7 +155,7 @@ assert repeating_row_filter(mtx3, 5, 4) == [[0, 0, 1, 1],
 
 Design and implement an algorithm that decides whether there is a circle in a directed graph. A circle is present if there are two vertices, $u$ and $v$, such that there exists a path from $u$ to $v$, and a path from $v$ to $u$.
 
-Use the outline below, where `Graph` is an abstract class whose subclasses implement a simple Graph. The full class, along with a fully implemented `Graph` subclass (named `AdjacencyListGraph`) is given in `src/task04.py`.
+Use the outline below, where `Graph` is an abstract class whose subclasses implement a simple Graph. The full class, along with a fully implemented `Graph` subclass (named `AdjacencyListGraph`) is given in `src/task03.py`.
 
 ```py
 def contains_circle(graph: Graph) -> bool:
