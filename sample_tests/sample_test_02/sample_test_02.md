@@ -238,7 +238,7 @@ costs = [
     ("A", "B", 2.0),
     ("C", "D", 3.0)
 ]
-assert network_rebuild(cities, costs, 1, 3, 3) == 5.0   # note: k = 1
+assert network_rebuild(cities, costs, 1, 4, 2) == 5.0   # note: k = 1
 ```
 
 Explanations:
