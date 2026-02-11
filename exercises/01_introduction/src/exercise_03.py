@@ -1,0 +1,34 @@
+def invert_binary_string(s: str) -> str:
+    # TODO
+    pass
+
+
+if __name__ == "__main__":
+    output = None
+
+    # TEST #1
+    try:
+        output = invert_binary_string("00101")
+        assert output == "11010"
+        print("Test #1 passed!")
+    except:
+        print("Test #1 failed! "
+              f"Expected output: '11010', actual output: {output}")
+
+    # TEST #2
+    try:
+        output = invert_binary_string("1100")
+        assert output == "0011"
+        print("Test #2 passed!")
+    except:
+        print("Test #2 failed! "
+              f"Expected output: '0011', actual output: {output}")
+
+    # TEST #3
+    try:
+        output = invert_binary_string("")
+        assert output == ""
+        print("Test #3 passed!")
+    except:
+        print("Test #3 failed! "
+              f"Expected output: '', actual output: {output}")
