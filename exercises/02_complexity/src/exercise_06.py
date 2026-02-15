@@ -15,9 +15,11 @@ if __name__ == "__main__":
         output = subsets(set())
         assert output == expected
         print("Test #1 passed!")
-    except:
+    except AssertionError:
         print("Test #1 failed! "
               f"Expected output: {expected}, actual output: {output}")
+    except Exception as exception:
+        print(f"The following exception occured during Test #1:\n{exception}")
 
     # Test #2
     try:
@@ -30,6 +32,8 @@ if __name__ == "__main__":
         output_counter = Counter([tuple(s) for s in output])
         assert expected_counter == output_counter
         print("Test #2 passed!")
-    except:
+    except AssertionError:
         print("Test #2 failed! "
               f"Expected output: {expected}, actual output: {output}")
+    except Exception as exception:
+        print(f"The following exception occured during Test #2:\n{exception}")

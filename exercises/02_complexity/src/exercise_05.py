@@ -17,9 +17,11 @@ if __name__ == "__main__":
         output = matmul([[.5]], [[2]])
         assert output == expected
         print("Test #1 passed!")
-    except:
+    except AssertionError:
         print("Test #1 failed! "
               f"Expected output: {expected}, actual output: {output}")
+    except Exception as exception:
+        print(f"The following exception occured during Test #1:\n{exception}")
 
     # Test #2
     try:
@@ -27,6 +29,8 @@ if __name__ == "__main__":
         output = matmul([[1, 2], [3, 4]], [[3, 4], [5, 6]])
         assert output == expected
         print("Test #2 passed!")
-    except:
+    except AssertionError:
         print("Test #2 failed! "
               f"Expected output: {expected}, actual output: {output}")
+    except Exception as exception:
+        print(f"The following exception occured during Test #2:\n{exception}")
