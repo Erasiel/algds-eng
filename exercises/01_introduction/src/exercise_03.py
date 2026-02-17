@@ -1,4 +1,4 @@
-def invert_binary_string(s: str) -> str:
+def invert_binary_string(string: str) -> str:
     # TODO
     pass
 

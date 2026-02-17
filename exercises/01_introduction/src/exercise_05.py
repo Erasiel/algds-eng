@@ -1,4 +1,4 @@
-def num_unique_characters(s: str) -> str:
+def num_unique_characters(string: str) -> str:
     # TODO
     pass
 
