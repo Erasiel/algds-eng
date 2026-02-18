@@ -1,5 +1,4 @@
 def func(a, b, c):
-    print(a[7])
     return a[0] + b[0] * c
 
 
@@ -22,6 +21,6 @@ if __name__ == "__main__":
         assert output == -2
         print("Test #2 passed!")
     except AssertionError:
-        print(f"Test #2 failed! Expected output: 4, actual output: {output}")
+        print(f"Test #2 failed! Expected output: -2, actual output: {output}")
     except Exception as exception:
         print(f"The following exception occured during Test #2:\n{exception}")
