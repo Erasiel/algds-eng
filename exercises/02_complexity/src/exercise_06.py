@@ -28,6 +28,8 @@ if __name__ == "__main__":
         output = subsets(set([1, 2, 3]))
 
         from collections import Counter
+        from typing import Iterable
+        assert isinstance(output, Iterable)
         expected_counter = Counter([tuple(s) for s in expected])
         output_counter = Counter([tuple(s) for s in output])
         assert expected_counter == output_counter
