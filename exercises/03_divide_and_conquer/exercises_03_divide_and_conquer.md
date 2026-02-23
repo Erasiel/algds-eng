@@ -2,101 +2,51 @@
 
 ### Exercise 1
 
-Design and implement **recursive** algorithms for the following problems:
-1. Factorial calculation
-2. Computing the n-th Fibonacci number
-3. Reversing a string
-4. Finding the index of a number in a sorted list of numbers (binary search)
-
-Use the following outlines:
-
-```py
-def factorial(n: int) -> int:
-    # TODO
-```
-
-```py
-def fibonacci(n: int) -> int:
-    # TODO
-```
-
-```py
-from typing import Optional
-
-
-def reverse(s: str, idx: Optional[int] = None) -> str:
-    # TODO
-
-# Example call
-reverse("tartar sauce")
-```
-
-```py
-from typing import List, Optional
-
-
-def index(arr: List[int],
-          x: int,
-          l: Optional[int] = None,
-          r: Optional[int] = None
-) -> int:
-    # TODO
-
-# Example call
-index([1, 2, 3, 4, 5], 4)
-```
+Design and implement a **recursive** algorithm that takes a non-negative integer $n$ and returns the value of $n!$, i.e., the factorial of $n$.
 
 ---
 
 ### Exercise 2
 
-Our goal is to get to the top of the $n$-th step in a very long flight of stairs. We can only move either one or two steps at a time and we can not go backwards. Design and implement a recursive algorithm that finds the number of distinct movement sequences we can take to get to get on top of the $n$-th step.
+Design and implement a **recursive** algorithm that reverses a string.
 
-**Constraints**
+---
+
+### Exercise 3
+
+Design and implement a **recursive** algorithm that takes a positive integer $n$ and returns the $n$-th Fibonacci number.
+
+---
+
+### Exercise 4
+
+Implement the binary search algorithm (see Exercise 2 from last week) using recursion.
+
+---
+
+### Exercise 5
+
+Our goal is to get to the top of the $n$-th step in a very long flight of stairs. We start on the ground and we can only move either one or two steps at a time and we can not go backwards. Design and implement a **recursive** algorithm that finds the number of distinct movement sequences we can take to get to get on top of the $n$-th step.
+
+**Constraints:**
 - $n > 0$
-
-Use the following outline:
-
-```py
-def steps(n_steps: int) -> int:
-    # TODO
-```
 
 Example: if $n=3$, the answer is 3. We can either move 1 step 3 times, move 2 steps followed by a 1-step move or move 1 step followed by a 2-step move.
 
 ---
 
-### Exercise 3
+### Exercise 6
 
 On a custom chess board with $n \times m$ positions, we want to move from the top-left corner to the bottom-right corner. We can only move one position down or right at a time and we can not go backwards. Design and implement a recursive algorithm that finds the number of distinct movement sequences we can take to get to get to the bottom-right corner.
 
 **Constraints**
 - $n, m > 0$
 
-Use the following outline:
-
-```py
-def board(n: int, m: int) -> int:
-    # TODO
-```
-
 Example: if $n=m=2$, the answer is 2. We can either start by moving down, followed by a right move, or start with a right move, followed by a move down.
 
 ---
 
-### Exercise 4
-
-Using the $O$-notation, analyze the time complexity of the algorithms of the following previous exercises:
-
-- Exercise 1.1: `factorial`
-- Exercise 1.3: `reverse`
-- Exercise 1.4: `index`
-- Exercise 2: `steps`
-- Exercise 3: `board`
-
----
-
-### Exercise 5
+### Exercise 7
 
 *Note: the description of the following exercise is not based on real events and any similarity to real life is merely coincidental.*
 
@@ -111,23 +61,24 @@ The movement of Andras is very restricted, he can only move one position up, dow
 
 Use the following outline:
 
-```py
-def survival(n: int, m: int, x: int, y: int, k: int) -> float:
-    # TODO
-```
-
 Example: if $n=m=2$, $x=y=1$ and $k=1$, the answer is 0.5. That is because with Andras will step to positions $(0, 1)$, $(1, 0)$, $(1, 2)$ and $(2, 1)$ with a 25% chance each, so in 50% of the cases he will step off the island.
 
 ---
 
-### Exercise 6
+### Exercise 8
 
-Implement the merge sort algorithm using recursion. Using the $O$-notation, analyze the time complexity of your implementation. Use the following outline:
+Implement the merge sort algorithm using recursion.
 
-```py
-from typing import List
+---
 
+### Exercise 9
 
-def merge_sort(arr: List[int]) -> List[int]:
-    # TODO
-```
+Using the $O$-notation, analyze the time complexity of the algorithms of the following previous exercises:
+- Exercise 1: `factorial`
+- Exercise 2: `reverse`
+- Exercise 3: `fibonacci`
+- Exercise 4: `index`
+- Exercise 5: `stairs`
+- Exercise 6: `board`
+- Exercise 7: `survival`
+- Exercise 8: `merge_sort`
