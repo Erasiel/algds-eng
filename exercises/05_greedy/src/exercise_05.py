@@ -33,10 +33,10 @@ if __name__ == "__main__":
                                        Item(value=4, weight=4),
                                        Item(value=5, weight=2),
                                        Item(value=5, weight=6),
-                                       Item(value=4, weight=5),])
+                                       Item(value=4, weight=5)])
         assert output == 16.5
         print("Test #2 passed!")
     except AssertionError:
-        print(f"Test #2 failed! Expected output: , actual output: {output}")
+        print(f"Test #2 failed! Expected output: 16.5, actual output: {output}")
     except Exception as exception:
         print(f"The following exception occured during Test #2:\n{exception}")

@@ -37,6 +37,6 @@ if __name__ == "__main__":
         assert output == 15
         print("Test #2 passed!")
     except AssertionError:
-        print(f"Test #2 failed! Expected output: , actual output: {output}")
+        print(f"Test #2 failed! Expected output: 15, actual output: {output}")
     except Exception as exception:
         print(f"The following exception occured during Test #2:\n{exception}")
