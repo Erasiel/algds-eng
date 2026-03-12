@@ -1,7 +1,7 @@
 from typing import List
 
 
-def interval_cover(K: List[int]) -> int:
+def interval_cover(K: List[float]) -> int:
     # TODO
     pass
 
