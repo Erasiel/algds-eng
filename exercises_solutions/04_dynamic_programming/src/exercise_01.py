@@ -1,0 +1,39 @@
+def stairs_recursive(n: int) -> int:
+    if n == 1: return 1
+    if n == 2: return 2
+    return stairs_recursive(n - 1) + stairs_recursive(n - 2)
+
+
+def stairs(n: int) -> int:
+    dp_table = [0] * n
+    dp_table[0] = 1
+
+    if n > 1: dp_table[1] = 2
+
+    for i in range(2, n):
+        dp_table[i] = dp_table[i - 1] + dp_table[i - 2]
+
+    return dp_table[-1]
+
+if __name__ == "__main__":
+    output = None
+
+    # TEST #1
+    try:
+        output = stairs(1)
+        assert output == 1
+        print("Test #1 passed!")
+    except AssertionError:
+        print(f"Test #1 failed! Expected output: 1, actual output: {output}")
+    except Exception as exception:
+        print(f"The following exception occured during Test #1:\n{exception}")
+
+    # TEST #2
+    try:
+        output = stairs(3)
+        assert output == 3
+        print("Test #2 passed!")
+    except AssertionError:
+        print(f"Test #2 failed! Expected output: 3, actual output: {output}")
+    except Exception as exception:
+        print(f"The following exception occured during Test #2:\n{exception}")
