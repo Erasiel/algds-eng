@@ -65,7 +65,7 @@ For $F=10$ and $P = \{1, 5, 7\}$, the desired output is 4. The four ways of chan
 
 ### Task 3 - Making up for lost time
 
-Instead of doing housework, you wasted your precious time playing video games, to the point where you have only one day to do your chores. Unfortunately, every one of your tasks can only be completed in a specific time of day, but as an experienced procrastinator, you know exactly how long each task takes to complete. Of course, some tasks overlap. You can only work on one task at a time, and you can't pause a task to return to it later. Your job is to complete as many tasks as possible.
+Instead of doing housework, you wasted your precious time playing video games, to the point where you have only one day to do your chores. Unfortunately, every one of your tasks can only be completed in a specific time of day, but as an experienced procrastinator, you know exactly how long each task takes to complete. Of course, some tasks overlap. You can only work on one task at a time, and you can't pause a task to return to it later. However, you can start a task instantly after finishing another, so if the planned end time of a task is the same as the planned start time of another, you can do both tasks. Your job is to complete as many tasks as possible.
 
 Your input is a list of two-element tuples `(start, end)`, where both `start` and `end` are strings in the form of `"hh:mm"` representing valid timestamps (e.g. `"09:15"`), and a number $n$, which is the length of the list. Design and implement an algorithm that determines the maximum number of tasks you can complete. Make sure your algorithm runs in at most $O(n \log n)$ time.
 
