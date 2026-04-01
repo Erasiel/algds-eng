@@ -21,6 +21,11 @@ class Stack:
         # TODO
         pass
 
+    def empty(self) -> bool:
+        """Returns `True` if the stack is empty and `False` otherwise."""
+        # TODO
+        pass
+
 
 if __name__ == "__main__":
     # TODO: test your implementation

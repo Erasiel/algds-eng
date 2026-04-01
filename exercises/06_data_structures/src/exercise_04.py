@@ -35,6 +35,16 @@ class DoubleStack:
         # TODO
         pass
 
+    def empty_stack1(self) -> bool:
+        """Returns `True` if the first stack is empty and `False` otherwise."""
+        # TODO
+        pass
+
+    def empty_stack2(self) -> bool:
+        """Returns `True` if the second stack is empty and `False` otherwise."""
+        # TODO
+        pass
+
 if __name__ == "__main__":
     # TODO: test your implementation
     pass

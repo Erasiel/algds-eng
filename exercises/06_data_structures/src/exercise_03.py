@@ -21,6 +21,11 @@ class Queue:
         # TODO
         pass
 
+    def empty(self) -> bool:
+        """Returns `True` if the queue is empty and `False` otherwise."""
+        # TODO
+        pass
+
 
 if __name__ == "__main__":
     # TODO: test your implementation

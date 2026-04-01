@@ -21,6 +21,11 @@ class Stack:
         # TODO
         pass
 
+    def empty(self) -> bool:
+        """Returns `True` if the stack is empty and `False` otherwise."""
+        # TODO
+        pass
+
     def min(self) -> Any:
         """Returns the minimum key in the stack."""
         # TODO
