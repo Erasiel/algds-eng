@@ -12,52 +12,56 @@ class BinaryTreeNode:
         self.right = right
 
 
-def is_balanced(root: BinaryTreeNode) -> bool:
+def height(node: BinaryTreeNode) -> int:
     # TODO
     pass
 
 
-if __name__ == "__main__":
-    from utils import binary_tree_to_string
 
-    # Exercise 2 (e)
+if __name__ == "__main__":
+    # Exercise 1 (e)
     leaf1 = BinaryTreeNode("E")
     leaf2 = BinaryTreeNode("D")
     leaf3 = BinaryTreeNode("C")
     inner1 = BinaryTreeNode("B", left=leaf1, right=leaf2)
     root = BinaryTreeNode("A", left=inner1, right=leaf3)
 
-    print("The tree for test case #1:")
+    from utils import binary_tree_to_string
+    print(f"The tree for test cases #1 - #3:")
     print(binary_tree_to_string(root))
+
+
+    output = None
 
     # TEST #1
     try:
-        output = is_balanced(root)
-        assert output == True
+        output = height(root)
+        assert output == 2
         print("Test #1 passed!")
     except AssertionError:
-        print("Test #1 failed! The first tree is height-balanced."
-              f"Expected output: True, actual output: {output}")
+        print("Test #1 failed! The height of the tree is 2."
+              f"Expected output: 2, actual output: {output}")
     except Exception as exception:
         print(f"The following exception occured during Test #1:\n{exception}")
 
-
-    # Exercise 2 (b)
-    leaf = BinaryTreeNode("D")
-    inner1 = BinaryTreeNode("C", left=leaf)
-    inner2 = BinaryTreeNode("B", left=inner1)
-    root = BinaryTreeNode("A", left=inner2)
-
-    print("The tree for test case #2:")
-    print(binary_tree_to_string(root))
-
     # TEST #2
     try:
-        output = is_balanced(root)
-        assert output == False
+        output = height(inner1)
+        assert output == 1
         print("Test #2 passed!")
     except AssertionError:
-        print("Test #2 failed! The first tree is height-balanced."
-              f"Expected output: False, actual output: {output}")
+        print("Test #2 failed! The height of the node B is 1."
+              f"Expected output: 1, actual output: {output}")
     except Exception as exception:
         print(f"The following exception occured during Test #2:\n{exception}")
+
+    # TEST #3
+    try:
+        output = height(leaf3)
+        assert output == 0
+        print("Test #3 passed!")
+    except AssertionError:
+        print("Test #3 failed! The height of the leaf node C is 0."
+              f"Expected output: 0, actual output: {output}")
+    except Exception as exception:
+        print(f"The following exception occured during Test #3:\n{exception}")

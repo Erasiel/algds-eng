@@ -14,9 +14,14 @@ class BinaryTreeNode:
         self.right = right
 
 
+def binary_tree_to_string(root: Optional[BinaryTreeNode] = None) -> str:
+    lines = _btree_to_str(root, 0, False, "-")[0]
+    return "\n" + "\n".join((line.rstrip() for line in lines))
+
+
 # The basis of the following implementation is taken directly from the
 # binarytree library: https://pypi.org/project/binarytree/
-def binary_tree_to_string(
+def _btree_to_str(
     root: Optional[BinaryTreeNode],
     curr_index: int,
     include_index: bool = False,
@@ -62,10 +67,10 @@ def binary_tree_to_string(
     new_root_width = gap_size = len(node_repr)
 
     # Get the left and right sub-boxes, their widths, and root repr positions
-    l_box, l_box_width, l_root_start, l_root_end = binary_tree_to_string(
+    l_box, l_box_width, l_root_start, l_root_end = _btree_to_str(
         root.left, 2 * curr_index + 1, include_index, delimiter
     )
-    r_box, r_box_width, r_root_start, r_root_end = binary_tree_to_string(
+    r_box, r_box_width, r_root_start, r_root_end = _btree_to_str(
         root.right, 2 * curr_index + 2, include_index, delimiter
     )
 

@@ -108,8 +108,7 @@ class BinarySearchTree:
             v.parent = u.parent
 
     def __str__(self) -> str:
-        lines = binary_tree_to_string(self.root, 0, False, "-")[0]
-        return "\n" + "\n".join((line.rstrip() for line in lines))
+        return binary_tree_to_string(self.root)
 
 
 if __name__ == "__main__":
