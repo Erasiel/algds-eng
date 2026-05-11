@@ -1,65 +1,59 @@
-from typing import Dict
-
-from exercise_03 import Graph, AdjacencyListGraph
+from typing import List
 
 
-class DFSOut:
-    def __init__(self, parent: str, discovered: int, finished: int) -> None:
-        self.parent = parent
-        self.discovered = discovered
-        self.finished = finished
-
-
-def depth_first_search(graph: Graph) -> Dict[str, DFSOut]:
-
-    def dfs_visit(graph: Graph, vertex: str) -> None:
-        # We want to reference and modify `time`, so we must mark it as a
-        # not locally declared variable:
-        # nonlocal time
-
-        # TODO
-        pass
-
-    parent = dict()
-    discovered = dict()
-    finished = dict()
-
+def num_transformations(start_word: str,
+                        dest_word: str,
+                        word_list: List[str]
+) -> int:
     # TODO
+    pass
 
-    # Return a dict of DFSOut objects
-    # This is not strictly required, we could return the `parent` and
-    # `distance` dictionaries instead
-    return {v: DFSOut(parent[v], discovered[v], finished[v])
-            for v in graph.get_vertices()}
+    output = None
 
+    # TEST #1
+    try:
+        output = num_transformations("hit",
+                                     "cog",
+                                     ["hot", "dot", "dog", "lot", "log", "cog"])
+        assert output == 4
+        print("Test #1 passed!")
+    except AssertionError:
+        print(f"Test #1 failed! Expected output: 4, actual output: {output}")
+    except Exception as exception:
+        print(f"The following exception occured during Test #1:\n{exception}")
 
-if __name__ == "__main__":
-    # Exercise 6
-    graph = AdjacencyListGraph()
-    graph.add_vertex("A")
-    graph.add_vertex("B")
-    graph.add_vertex("C")
-    graph.add_vertex("D")
-    graph.add_vertex("E")
-    graph.add_vertex("F")
-    graph.add_vertex("G")
-    graph.add_vertex("H")
-    graph.add_edge("A", "B")
-    graph.add_edge("A", "C")
-    graph.add_edge("B", "D")
-    graph.add_edge("B", "E")
-    graph.add_edge("C", "E")
-    graph.add_edge("D", "C")
-    graph.add_edge("E", "F")
-    graph.add_edge("G", "F")
-    graph.add_edge("G", "H")
-    graph.add_edge("H", "F")
+    # TEST #2
+    try:
+        output = num_transformations("hit",
+                                     "cog",
+                                     ["hot", "dot", "dog", "lot", "log"])
+        assert output == -1
+        print("Test #2 passed!")
+    except AssertionError:
+        print(f"Test #2 failed! Expected output: -1, actual output: {output}")
+    except Exception as exception:
+        print(f"The following exception occured during Test #2:\n{exception}")
 
-    bfs_output = depth_first_search(graph)
-    print("DFS output:")
-    for node in graph.get_vertices():
-        print(f"{node}:\t"
-              f"parent: {bfs_output[node].parent}\t"
-              f"discovered: {bfs_output[node].discovered}\t"
-              f"finished: {bfs_output[node].finished}")
+    # TEST #3
+    try:
+        output = num_transformations("hit",
+                                     "lit",
+                                     ["hot", "dot", "lot", "log", "lit"])
+        assert output == 1
+        print("Test #3 passed!")
+    except AssertionError:
+        print(f"Test #3 failed! Expected output: 1, actual output: {output}")
+    except Exception as exception:
+        print(f"The following exception occured during Test #3:\n{exception}")
 
+    # TEST #4
+    try:
+        output = num_transformations("hit",
+                                     "god",
+                                     ["hot", "god", "lot", "log", "lit"])
+        assert output == -1
+        print("Test #4 passed!")
+    except AssertionError:
+        print(f"Test #4 failed! Expected output: -1, actual output: {output}")
+    except Exception as exception:
+        print(f"The following exception occured during Test #4:\n{exception}")

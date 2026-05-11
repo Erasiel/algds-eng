@@ -1,70 +1,69 @@
 import math
-from typing import Any, Dict
+from typing import Any, Dict, List, Tuple
 from collections import deque
 
-from exercise_03 import Graph, AdjacencyListGraph
 
+def depth_first_search(graph: Dict[Any, List[Any]]
+) -> Tuple[Dict[Any, int], Dict[Any, int], Dict[Any, int]]:
+    """DFS for a graph using the adjacency list representation.
 
-class Queue:
-    def __init__(self):
-        self.queue = deque()
+    The implementation assumes that all vertices in the neighbor lists also appear as vertices in the graph.
 
-    def enqueue(self, x: Any) -> None:
-        self.queue.append(x)
+    Returns a tuple of three dictionaries, the first containing the discovery
+    times, the second the finishing times, and the third the parents of each
+    vertex.
+    """
 
-    def dequeue(self) -> Any:
-        return self.queue.popleft()
-
-    def first(self) -> Any:
-        return self.queue[0]
-
-    def __len__(self) -> int:
-        return len(self.queue)
-
-
-class BFSOut:
-    def __init__(self, parent: str, dist: int) -> None:
-        self.parent = parent
-        self.dist = dist
-
-
-def breadth_first_search(graph: Graph, start_vertex: str) -> Dict[str, BFSOut]:
-    distance = dict()
     parent = dict()
+    color = dict()
+    discovery = dict()
+    finish = dict()
 
-    # TODO
+    # Set the color of every vertex to white, their discovery and finish to 0
+    # and their parent to None
+    for v in graph.keys():
+        color[v] = "white"
+        parent[v] = None
+        discovery[v] = 0
+        finish[v] = 0
 
-    # Return a dict of BFSOut objects
-    # This is not strictly required, we could return the `parent` and
-    # `distance` dictionaries instead
-    return {v: BFSOut(parent[v], distance[v]) for v in graph.get_vertices()}
+    # Create the timestamp variable and set it to 0
+    T = 0
+
+    # Define the recursive depth-first traversal
+    def _depth_first_traversal(vertex: Any) -> None:
+        nonlocal T
+
+        # Increment T by 1
+        T += 1
+
+        # Set the parameter vertex's discovery to T and its color to gray
+        discovery[vertex] = T
+        color[vertex] = "gray"
+
+        # Loop over all neighbors, if a neighbor is white, set its parent and
+        # traverse it recursively
+        for n in graph[vertex]:
+            if color[n] == "white":
+                parent[n] = vertex
+                _depth_first_traversal(n)
+
+        # Increment T by 1
+        T += 1
+
+        # Set the parameter vertex's finish to T and its color to black
+        finish[vertex] = T
+        color[vertex] = "black"
+
+    # Loop over all vertices, if a vertex is white, traverse it
+    for v in graph.keys():
+        if color[v] == "white":
+            _depth_first_traversal(v)
+
+    return discovery, finish, parent
 
 
 if __name__ == "__main__":
-    # Exercise 4
-    graph = AdjacencyListGraph()
-    graph.add_vertex("A")
-    graph.add_vertex("B")
-    graph.add_vertex("C")
-    graph.add_vertex("D")
-    graph.add_vertex("E")
-    graph.add_vertex("F")
-    graph.add_vertex("G")
-    graph.add_vertex("H")
-    graph.add_edge("A", "B")
-    graph.add_edge("A", "C")
-    graph.add_edge("B", "D")
-    graph.add_edge("B", "E")
-    graph.add_edge("C", "E")
-    graph.add_edge("D", "C")
-    graph.add_edge("E", "F")
-    graph.add_edge("G", "F")
-    graph.add_edge("G", "H")
-    graph.add_edge("H", "F")
+    # TODO: test the correctness of your solution for Exercise 2
+    pass
 
-    bfs_output = breadth_first_search(graph, "A")
-    print("BFS output:")
-    for node in graph.get_vertices():
-        print(f"{node}:\t"
-              f"parent: {bfs_output[node].parent}\t"
-              f"distance: {bfs_output[node].dist}")
