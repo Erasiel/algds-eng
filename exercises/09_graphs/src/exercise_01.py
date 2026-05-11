@@ -21,7 +21,7 @@ def get_edges(G: Dict[Any, List[Any]]) -> List[Tuple[Any, Any]]:
     pass
 
 
-def get_neighbors(G: Dict[Any, List[Any]]) -> List[Any]:
+def get_neighbors(G: Dict[Any, List[Any]], v: Any) -> List[Any]:
     # TODO
     pass
 

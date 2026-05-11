@@ -8,6 +8,9 @@ def num_transformations(start_word: str,
     # TODO
     pass
 
+
+if __name__ == "__main__":
+
     output = None
 
     # TEST #1
